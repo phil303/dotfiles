@@ -1,0 +1,18 @@
+# adds git aliases
+alias gs='git status '
+alias gss='git status -s '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit '
+alias gd='git diff '
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+alias gh='git hist '
+alias gist='git hist '
+
+alias got='git '
+alias get='git '
+
+# add quick jump to ruby directory
+alias cdr='~/Documents/Programming/Ruby'  
