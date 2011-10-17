@@ -1,0 +1,71 @@
+# Path to your oh-my-zsh configuration.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+export ZSH_THEME="robbyrussell"
+
+# Set to this to use case-sensitive completion
+# export CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+export DISABLE_AUTO_UPDATE="true"
+
+HISTSIZE=1000
+SAVEHIST=1000
+
+
+# Uncomment following line if you want to disable colors in ls
+# export DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# export DISABLE_AUTO_TITLE="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git rails ruby heroku osx)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin
+
+# set RVM to run in shell sessions by default
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# Some custom fonts
+PROMPT='%{$fg_bold[blue]%}➜ %{$fg_bold[cyan]%}%t %{$fg[yellow]%}${PWD/#$HOME/~} %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+
+RPROMPT='%{$fg_bold[yellow]%}%n%f%{$fg_bold[blue]%}@%{$fg_bold[yellow]%}%m%f%{$reset_color%}'
+
+# Original git prompt info
+# ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
+# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
+# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{154}±|%f%F{124}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}%B✘%b%F{154}|%f%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%F{154}|"
+
+# adds git aliases
+alias gs='git status '
+alias gss='git status -s '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit '
+alias gd='git diff '
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+alias gh='git hist '
+alias gist='git hist '
+
+alias got='git '
+alias get='git '
+
+# add quick jump to ruby directory
+alias cdr='~/Documents/Programming/Ruby'
