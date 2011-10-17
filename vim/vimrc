@@ -5,7 +5,7 @@ set nocompatible
 
 " call Pathogen plugin handler
 "filetype off
-silent! call pathogen#runtime_append_all_bundles() 
+call pathogen#runtime_append_all_bundles() 
 
 " Start up MacVim without toolbar
 set go-=T
