@@ -1,7 +1,7 @@
 # write gemfile DONE
 # run 'bundle install --without production' DONE
 
-# if rspec is installed run 'rails generate rspec:install'
+# if rspec is installed run 'rails generate rspec:install' DONE
 
 # if cucumber and rspec/capybara is installed run 'rails generate cucumber:install --capybara --rspec'
 
@@ -33,7 +33,7 @@ task :newrails do
     @rails_version = File.open('Gemfile', 'r').readlines.
       grep(/gem 'rails'/).to_s.scan(/\d+.\d+.\d+/).first
     File.open('Gemfile', 'w') do |f|
-      puts "Writing Gemfile"
+      puts "Writing Gemfile..."
       puts "Rails version to be written: #{@rails_version}"
       f.puts(gemfile_contents)
       f.close
@@ -41,27 +41,25 @@ task :newrails do
     end
     system %Q{bundle install --without production}
 
-    # Search gem list for gems (rspec and rspec-rails, cucumber, spork and guard-spork,
-    # annotate, pry, haml and haml-rails)
+    # Search gem list for gems
     ## Should I search Gemfile.lock instead?
     @gem_list = `gem list`.split("\n").map { |gem| gem.match(/^\S+/).to_s }
 
-    rspec_bool = gem_exist?("rspec", "rspec-rails")
-    cucumber_bool = gem_exist?("cucumber")
-    capybara_bool = gem_exist?("capybara")
-    spork_bool = gem_exist?("spork", "guard-spork")
-    factory_girl_bool = gem_exist?("factory_girl_rails")
-    pry_bool = gem_exist?("pry")
-    haml_bool = gem_exist?("haml", "haml-rails")
+    check_list = %w[rspec cucumber capybara spork guard-spork
+                     factory_girl_rails annotate pry haml haml-rails]
+    gem_exist?(check_list)
+
+    if @exist_list["rspec"]
+      puts "Generating RSpec files..."
+      system %Q{rails generate rspec:install}
+    end
   end
-
-
 end
 
-# not working, just returning the first evaluation
-def gem_exist?(*gem)
-  gem.each do |gem|
-    return @gem_list.include? gem
+def gem_exist?(check_list)
+  @exist_list = {}
+  check_list.each do |gem|
+    @exist_list[gem] = @gem_list.include?(gem)
   end
 end
 
