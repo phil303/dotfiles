@@ -1,29 +1,3 @@
-# write gemfile DONE
-# run 'bundle install --without production' DONE
-
-# if rspec is installed run 'rails generate rspec:install' DONE
-
-# if cucumber and rspec/capybara is installed run 'rails generate cucumber:install --capybara --rspec'
-
-# if spork and guard-spork is installed, run 'spork --bootstrap'
-#   - Move contents of original spec_helper into prefork block
-#   - if factory_girl_rails is installed add 'FactoryGirl.reload' to each_run block
-
-# run 'guard init spork/rspec/cucumber' to all that apply
-
-# in guardfile change rspec line to look like this:
-#   guard 'rspec', :version => 2, :cli => '--drb' do
-
-
-# if annotate is in gemfile write annotate task in lib/task
-
-# if pry is installed add pry configuration to config/environments/development.rb 
-
-# if haml is installed haml scaffold config to config/application.rb:
-#     config.generators do |g|
-#       g.template_engine :haml
-#     end
-
 require 'rake'
 
 desc "Set up new Rails projects"
@@ -49,11 +23,78 @@ task :newrails do
                      factory_girl_rails annotate pry haml haml-rails]
     gem_exist?(check_list)
 
+    # RSpec Operations
     if @exist_list["rspec"]
       puts "Generating RSpec files..."
       system %Q{rails generate rspec:install}
+      if @exist_list["cucumber"] && @exist_list["capybara"]
+        puts "Generating Cucumber files"
+        system %Q{rails generate cucumber:install --capybara --rspec}
+      end
+    end
+
+    # Spork Operations
+    if @exist_list["spork"] && @exist_list["guard-spork"]
+      system %Q{spork --bootstrap}
+      if File.exist?("./spec/spec_helper.rb")
+        spec_helper = File.open("./spec/spec_helper.rb", "r").readlines
+        prefork_start = spec_helper.index("ENV[\"RAILS_ENV\"] ||= 'test'\n")
+        prefork = spec_helper[prefork_start..-1].join("\t")
+        File.open("./spec/spec_helper.rb", "w") do |f|
+          puts "Writing new spec_helper file..."
+          f.puts(new_spork(prefork))
+          f.close
+          puts "New spec_helper file written."
+        end
+      end
     end
   end
+end
+
+def new_spork(prefork)
+"require 'rubygems'
+require 'spork'
+
+Spork.prefork do
+  # Loading more in this block will cause your tests to run faster. However,
+  # if you change any configuration or code from libraries loaded here, you'll
+  # need to restart spork for it take effect.
+  #{prefork}
+end
+
+Spork.each_run do
+  # This code will be run each time you run your specs.
+
+end
+
+# --- Instructions ---
+# Sort the contents of this file into a Spork.prefork and a Spork.each_run
+# block.
+#
+# The Spork.prefork block is run only once when the spork server is started.
+# You typically want to place most of your (slow) initializer code in here, in
+# particular, require'ing any 3rd-party gems that you don't normally modify
+# during development.
+#
+# The Spork.each_run block is run each time you run your specs.  In case you
+# need to load files that tend to change during development, require them here.
+# With Rails, your application modules are loaded automatically, so sometimes
+# this block can remain empty.
+#
+# Note: You can modify files loaded *from* the Spork.each_run block without
+# restarting the spork server.  However, this file itself will not be reloaded,
+# so if you change any of the code inside the each_run block, you still need to
+# restart the server.  In general, if you have non-trivial code in this file,
+# it's advisable to move it into a separate file so you can easily edit it
+# without restarting spork.  (For example, with RSpec, you could move
+# non-trivial code into a file spec/support/my_helper.rb, making sure that the
+# spec/support/* files are require'd from inside the each_run block.)
+#
+# Any code that is left outside the two blocks will be run during preforking
+# *and* during each_run -- that's probably not what you want.
+#
+# These instructions should self-destruct in 10 seconds.  If they don't, feel
+# free to delete them."
 end
 
 def gem_exist?(check_list)
