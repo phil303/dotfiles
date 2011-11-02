@@ -19,8 +19,8 @@ task :newrails do
     ## Should I search Gemfile.lock instead?
     @gem_list = `gem list`.split("\n").map { |gem| gem.match(/^\S+/).to_s }
 
-    check_list = %w[rspec cucumber capybara spork guard-spork
-                     factory_girl_rails annotate pry haml haml-rails]
+    check_list = %w[rspec cucumber capybara spork guard-spork guard-rspec
+                    factory_girl_rails annotate pry haml haml-rails]
     gem_exist?(check_list)
 
     # RSpec Operations
@@ -40,18 +40,43 @@ task :newrails do
         spec_helper = File.open("./spec/spec_helper.rb", "r").readlines
         prefork_start = spec_helper.index("ENV[\"RAILS_ENV\"] ||= 'test'\n")
         prefork = spec_helper[prefork_start..-1].join("\t")
+        puts @exist_list["factory_girl_rails"]
+        if @exist_list["factory_girl_rails"]
+          each_run = "\n\tFactoryGirl.reload"
+        else
+          each_run = ""
+        end
         File.open("./spec/spec_helper.rb", "w") do |f|
           puts "Writing new spec_helper file..."
-          f.puts(new_spork(prefork))
+          f.puts(new_spork(prefork, each_run))
           f.close
           puts "New spec_helper file written."
         end
       end
     end
+
+    # Guard Operations
+    if @exist_list["guard-rspec"]
+      if @exist_list["spork"] && @exist_list["guard-spork"]
+        system %Q{guard init spork}
+      end
+      if @exist_list["rspec"]
+        system %Q{guard init rspec}
+      end
+      if @exist_list["cucumber"]
+        system %Q{guard init cucumber}
+      end
+      guardfile = File.open("Guardfile", "r").readlines
+      guardfile[guardfile.index("guard 'rspec', :version => 2 do\n")] = 
+        "guard 'rspec', :version => 2, :cli => '--drb' do"
+      f = File.open("Guardfile", "w")
+      f.puts guardfile
+      f.close
+    end
   end
 end
 
-def new_spork(prefork)
+def new_spork(prefork, each_run)
 "require 'rubygems'
 require 'spork'
 
@@ -63,8 +88,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  # This code will be run each time you run your specs.
-
+  # This code will be run each time you run your specs.#{each_run}
 end
 
 # --- Instructions ---
