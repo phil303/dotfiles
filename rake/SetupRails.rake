@@ -2,7 +2,7 @@ require 'rake'
 
 desc "Set up new Rails projects"
 task :newrails do
-  # Write and install Gemfile
+  # Gemfile Operations
   if File.exist? "Gemfile"
     @rails_version = File.open('Gemfile', 'r').readlines.
       grep(/gem 'rails'/).to_s.scan(/\d+.\d+.\d+/).first
@@ -16,7 +16,7 @@ task :newrails do
     system %Q{bundle install --without production}
   end
 
-  # Search gem list for gems
+  # Create list of gems
   ## Should I search Gemfile.lock instead?
   @gem_list = `gem list`.split("\n").map { |gem| gem.match(/^\S+/).to_s }
 
@@ -74,6 +74,58 @@ task :newrails do
     f.puts guardfile
     f.close
   end
+
+  # Annotation Operations
+  if @exist_list["annotate"]
+    f = File.open("./lib/tasks/annotations.rake", "w+")
+    f.puts annotations
+    f.close
+  end
+
+  # Pry Operations
+  if @exist_list["pry"]
+    pry_add = File.open("./config/environments/development.rb", "r").readlines
+    pry_add[pry_add.index("end\n") - 1] = pry_contents
+    f = File.open("./config/environments/development.rb", "w")
+    f.puts pry_add
+    f.close
+  end
+end
+
+def pry_contents
+"\t# Add pry as default for 'rails console'
+\tsilence_warnings do
+  \tbegin
+    \trequire 'pry'
+    \tIRB = Pry
+  \trescue LoadError
+  \tend
+\tend"
+end
+
+def annotations
+"# Added in to make annotations run automatically
+namespace :db do
+  task :migrate do
+    unless Rails.env.production?
+      require \"annotate/annotate_models\"
+      AnnotateModels.do_annotations(:position_in_class => 'before',
+                                    :position_in_fixture => 'before')
+    end
+  end
+
+  namespace :migrate do
+    [:up, :down, :reset, :redo].each do |t|
+      task t do
+        unless Rails.env.production?
+          require \"annotate/annotate_models\"
+          AnnotateModels.do_annotations(:position_in_class => 'before',
+                                        :position_in_fixture => 'before')
+        end
+      end
+    end
+  end
+end"
 end
 
 def new_spork(prefork, each_run)
