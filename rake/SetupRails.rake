@@ -29,7 +29,7 @@ task :newrails do
     puts "Generating RSpec files..."
     system %Q{rails generate rspec:install}
     if @exist_list["cucumber"] && @exist_list["capybara"]
-      puts "Generating Cucumber files"
+      puts "Generating Cucumber files..."
       system %Q{rails generate cucumber:install --capybara --rspec}
     end
   end
@@ -77,6 +77,7 @@ task :newrails do
 
   # Annotation Operations
   if @exist_list["annotate"]
+    puts "Writing lib/tasks/annotations.rake..."
     f = File.open("./lib/tasks/annotations.rake", "w+")
     f.puts annotations
     f.close
@@ -84,6 +85,7 @@ task :newrails do
 
   # Pry Operations
   if @exist_list["pry"]
+    puts "Setting up pry to start with 'rails console'..."
     pry_add = File.open("./config/environments/development.rb", "r").readlines
     pry_add[pry_add.index("end\n") - 1] << pry_contents
     f = File.open("./config/environments/development.rb", "w")
@@ -93,6 +95,7 @@ task :newrails do
 
   # Haml Operations
   if @exist_list["haml"] && @exist_list["haml-rails"]
+    puts "Setting up scaffold generator to generate haml views..."
     haml_add = File.open("./config/application.rb", "r").readlines
     haml_add[haml_add.index("  end\n")-1] << haml_contents
     f = File.open("./config/application.rb", "w")
