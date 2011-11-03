@@ -41,7 +41,7 @@ task :newrails do
       spec_helper = File.open("./spec/spec_helper.rb", "r").readlines
       prefork_start = spec_helper.index("ENV[\"RAILS_ENV\"] ||= 'test'\n")
       prefork = spec_helper[prefork_start..-1].join("\t")
-      puts @exist_list["factory_girl_rails"]
+      @exist_list["factory_girl_rails"]
       if @exist_list["factory_girl_rails"]
         each_run = "\n\tFactoryGirl.reload"
       else
@@ -85,22 +85,40 @@ task :newrails do
   # Pry Operations
   if @exist_list["pry"]
     pry_add = File.open("./config/environments/development.rb", "r").readlines
-    pry_add[pry_add.index("end\n") - 1] = pry_contents
+    pry_add[pry_add.index("end\n") - 1] << pry_contents
     f = File.open("./config/environments/development.rb", "w")
     f.puts pry_add
     f.close
   end
+
+  # Haml Operations
+  if @exist_list["haml"] && @exist_list["haml-rails"]
+    haml_add = File.open("./config/application.rb", "r").readlines
+    haml_add[haml_add.index("  end\n")-1] << haml_contents
+    f = File.open("./config/application.rb", "w")
+    f.puts haml_add
+    f.close
+  end
+end
+
+def haml_contents
+"
+   # Creates haml scaffolding
+    config.generators do |g|
+      g.template_engine :haml
+    end"
 end
 
 def pry_contents
-"\t# Add pry as default for 'rails console'
-\tsilence_warnings do
-  \tbegin
-    \trequire 'pry'
-    \tIRB = Pry
-  \trescue LoadError
-  \tend
-\tend"
+"
+  # Add pry as default for 'rails console'
+  silence_warnings do
+    begin
+      require 'pry'
+      IRB = Pry
+    rescue LoadError
+    end
+  end"
 end
 
 def annotations
