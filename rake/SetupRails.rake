@@ -5,7 +5,7 @@ task :newrails do
   # Gemfile Operations
   if File.exist? "Gemfile"
     @rails_version = File.open('Gemfile', 'r').readlines.
-      grep(/gem 'rails'/).to_s.scan(/\d+.\d+.\d+/).first
+      grep(/gem 'rails'/).to_s.scan(/\d+.\d+.\d+(.\w+)?/).first
     File.open('Gemfile', 'w') do |f|
       puts "Writing Gemfile..."
       puts "Rails version to be written: #{@rails_version}"
