@@ -158,6 +158,7 @@ vnoremap <D-l> >gv
 syntax enable
 set background=dark
 colorscheme solarized
+call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
 
 " highlights code that goes over 80 columns
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
