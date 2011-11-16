@@ -155,7 +155,9 @@ vnoremap <D-h> <gv
 vnoremap <D-l> >gv
 
 " Set colorscheme
-colorscheme desert
+syntax enable
+set background=dark
+colorscheme solarized
 
 " highlights code that goes over 80 columns
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
