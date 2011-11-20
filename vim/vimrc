@@ -183,16 +183,3 @@ imap hh =>
 " open NERDTree in folder in active buffer
 nmap <silent> <c-n> :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize=22
-
-" Enhanced Commentify Key Bindings
-let g:EnhCommentifyFirstLineMode = "yes"
-let g:EnhCommentifyUserBindings  = "yes"
-
-nmap <silent> <Leader>s <Plug>Comment
-nmap <silent> <Leader>d <Plug>DeComment
-nmap <silent> <Leader>t <Plug>Traditional
-nmap <silent> <Leader>f <Plug>FirstLine
-vmap <silent> <Leader>c <Plug>VisualComment
-vmap <silent> <Leader>d <Plug>VisualDeComment
-vmap <silent> <Leader>t <Plug>VisualTraditional
-vmap <silent> <Leader>f <Plug>VisualFirstLine
