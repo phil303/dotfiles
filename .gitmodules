@@ -1,9 +1,12 @@
 [submodule "vim/bundle/command-t"]
 	path = vim/bundle/command-t
-	url = git://git.wincent.com/command-t.git
+  url = git://github.com/wincent/Command-T.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/vim-rails"]
 	path = vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
