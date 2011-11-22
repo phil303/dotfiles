@@ -9,6 +9,9 @@ To use for installation on a new machine.  Based on Ryan Bates and Tim Pope dotf
   cd ~/.dotfiles
   rake install
 
+== Updating All Submodules
+  
+  git submodule foreach git pull origin master
 
 == Environment
 
