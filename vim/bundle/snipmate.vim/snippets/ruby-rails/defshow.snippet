@@ -1,8 +1,0 @@
-def show
-	@${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
-
-	respond_to do |f|
-		f.html # show.html.erb
-		f.xml  { render :xml => @$1 }
-	end
-end${3}
