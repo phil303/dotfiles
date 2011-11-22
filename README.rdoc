@@ -12,7 +12,6 @@ To use for installation on a new machine.  Based on Ryan Bates and Tim Pope dotf
 == Updating All Submodules
   
   git submodule foreach git pull origin master
-
 == Environment
 
 Switching to ZSH from bash shell.
