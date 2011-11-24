@@ -3,7 +3,8 @@
 	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/vim-rails"]
 	path = vim/bundle/vim-rails
-	url = https://github.com/tpope/vim-rails
+	url = git://github.com/tpope/vim-rails.git 
+  ignore = dirty
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
