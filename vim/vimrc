@@ -56,6 +56,7 @@ set wildmenu          "Turns command-line completion on
 set wildignore=*~,.git,tmp,_site,*.log	"Matching files ignored
 set noerrorbells      "Default off. Turn off audible bell
 set visualbell        "Default off.  Turn on visual bell
+set number            "Row numbers
 
 
 
