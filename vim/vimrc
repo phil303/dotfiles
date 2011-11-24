@@ -1,146 +1,111 @@
-" General Vim Config
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+filetype off
+call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
 set nocompatible
 
-" call Pathogen plugin handler
-"filetype off
-call pathogen#runtime_append_all_bundles() 
+set encoding=utf-8    "Default encoding set to utf-8
+set nomodeline        "Modelines for diff ft handling but are a security risk.
+set scrolloff=3       "Scroll offset equal to 3 lines
+set showmode          "Vim default on. Displays what mode on last line.
+set fillchars=diff:\  "'\' replaces '-' in Vim diff
+set undofile          "Vim automatically saves undo history to an undo file
+set undoreload=10000  "Save the whole buffer for undo when reloading it.
+set list              "Show invisible symbols as characters.
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set showbreak=↪       "When breakline is present, show argument as character
+set shiftround        "Round indent to nearest tabstop
+set wildmode=list:longest     "When more than one match, list all matches
+                              "and complete first match.
+set wrap              "Wraps text
+set linebreak         "Wrap breaks at word boundaries
+set virtualedit+=block  "Don't get.  Most people recommend though
+set autochdir         "Change working directory to that of the file opened
+set autoindent        "Indented lines have the same indent level
+set autoread          "Externally updated files are automatically read
+set autowrite         "Autosave modified buffers when switching to another
+set backspace=indent,eol,start    "Backspace over indents, line breaks, etc.
+set completeopt=longest,menuone   "Completion options
+set gdefault          "Global substitution is set on
+set guioptions-=A     "Disallows putting selected text into copy register
+set guioptions-=T     "Disallows gui toolbar
+set guioptions-=m     "Disallows gui menubar
+set guioptions-=r     "Disallows right handed scrollbar
+set guioptions-=R
+set guioptions-=l     "Disallows left handed scrollbar
+set guioptions-=L     
+set history=1000      "History of ':' commands.  Vim default is 20.
+set hlsearch          "Highlight search matches
+set ignorecase        "Ignores case of search terms
+set smartcase         "Override 'ignorecase' if search contains uppercases.
+set incsearch         "matches as you type
+set laststatus=2      "2 means all windows will have a status line
+set magic             "Default on. Allows for special char. in search patterns
+set matchtime=3       "Argument is the tenths of a second until matching parens
+set mouse=a           "Enable mouse in all modes
+set ruler             "Show the cursor position (row,column)
+set shiftwidth=2      "Number of spaces used for autoindent
+set expandtab         "Tabs are expanded as spaces
+set tabstop=2         "Number of spaces tab accounts for           
+set softtabstop=2     "Tabs count for 2 spaces when editing
+set smarttab          "Insert blanks according to shiftwidth.
+set showmatch         "When a bracket is inserted, briefly jump to matching one
+set splitright        "New buffers open on the right side of current buffer
+set splitbelow        "New buffers open below current buffer 
+set textwidth=78      "Max width of text inserted.  '0' disables
+set wildmenu          "Turns command-line completion on
+set wildignore=*~,.git,tmp,_site,*.log	"Matching files ignored
+set noerrorbells      "Default off. Turn off audible bell
+set visualbell        "Default off.  Turn on visual bell
 
-" Start up MacVim without toolbar
-set go-=T
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
 
-" Change the leader
-let mapleader=","
+" Status line
+set statusline=%F%m%r%h%w
+set statusline+=\ %#warningmsg#
+set statusline+=%*
+set statusline+=%=(%{&ff}/%Y)
+set statusline+=\ (line\ %l\/%L,\ col\ %c)
+ 
 
-" Add shortcut to edit vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+" Set colorscheme
+syntax enable
+set background=dark
+colorscheme solarized
+call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
 
-  " Source the vimrc file after saving it
-  autocmd bufwritepost .vimrc source $MYVIMRC
 
-"  " Save and restore folds when a file is closed and re-opened
-"  au BufWinLeave .* mkview
-"  au BufWinEnter .* silent loadview
-"  set viewoptions=folds
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+" Backups
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
+set backup 
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
+" Resize splits when vim is resized
+autocmd VimResized * exe "normal! \<c-w>="
+" Jump to last known cursor position
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
     \ endif
 
-  augroup END
 
-else
+" Mappings
+let mapleader = ","
 
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" set backup directory
-set backupdir=~/.tmp
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup  		" keep a backup file
-endif
-set autochdir     " automatically change directories when a file/buffer is opened
-set history=50		" keep 50 lines of command line history
-set ruler		      " show the cursor position all the time
-set showcmd		    " display incomplete commands
-set incsearch		  " do incremental searching
-set nu            " number each line
-set noeb          " turn off audible bell
-set vb            " turn on visual bell
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-
-" Convenient command to see the difference between the current buffer and the
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
-
-" force write a file you don't have permission to write to
-cmap w!! %!sudo tee > /dev/null %
-
-
-" Map hotkey to change directory to the file being edited
-map <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" Sets wildmenu
-set wildmenu
-
-" Map CTRL-E to do what ',' used to do 
-nnoremap <c-e> ,
-vnoremap <c-e> ,
-
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-  
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
-
+imap hh =>
 " Esc to remove search highlighting
 nnoremap <silent> <esc> :noh<return><esc>
-
 " Use ctrl+hjkl to move between window splits
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-
+" Keep search matches in middle of window
+nnoremap n nzzzy
+nnoremap N Nzzzy
 " Move a line of text using Alt+[jk], indent with Alt+[hl]
 nnoremap <D-j> :m+<CR>==
 nnoremap <D-k> :m-2<CR>==
@@ -155,31 +120,20 @@ vnoremap <D-k> :m-2<CR>gv=gv
 vnoremap <D-h> <gv
 vnoremap <D-l> >gv
 
-" Set colorscheme
-syntax enable
-set background=dark
-colorscheme solarized
-call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
+"Shortcuts
+" Toggle `set list`
+nmap <leader>l :set list!<CR>
+" Edit vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
-" highlights code that goes over 80 columns
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
-" For Ruby
-set tabstop=2		  " Tab characters = 4 spaces when displayed
-set shiftwidth=2	" Use 2 spaces for each insertion of (auto)indent
-set softtabstop=2	" Tabs count for 2 spaces when editing (fake tabs)
-set expandtab		  " <tab> -> spaces in insert mode
-set smarttab		  " Smart tabbing!
-map <leader>r :rubyf %<CR>
-map <leader>rb :!irb<CR>
-imap hh =>
-
-" Plugins
-" Start NERDTree at certain directory
-" cd ~/documents/programming/ruby
 
 " Add Ctrl-n shortcut for NERDtree
 " open NERDTree in folder in active buffer
 nmap <silent> <c-n> :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize=22
+
+" To get tab to work again when no snippets are found!
+let g:snipMate = {'no_match_completion_feedkeys_chars': "\<tab>" }
+
+" Command-t
+let g:CommandTMatchWindowAtTop = 1
