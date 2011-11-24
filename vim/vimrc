@@ -10,7 +10,7 @@ set showmode          "Vim default on. Displays what mode on last line.
 set fillchars=diff:\  "'\' replaces '-' in Vim diff
 set undofile          "Vim automatically saves undo history to an undo file
 set undoreload=10000  "Save the whole buffer for undo when reloading it.
-set list              "Show invisible symbols as characters.
+set nolist            "Show invisible symbols as characters.
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪       "When breakline is present, show argument as character
 set shiftround        "Round indent to nearest tabstop
