@@ -45,12 +45,12 @@ set mouse=a           "Enable mouse in all modes
 set ruler             "Show the cursor position (row,column)
 set shiftwidth=2      "Number of spaces used for autoindent
 set expandtab         "Tabs are expanded as spaces
-set tabstop=2         "Number of spaces tab accounts for           
+set tabstop=2         "Number of spaces tab accounts for
 set softtabstop=2     "Tabs count for 2 spaces when editing
-set smarttab          "Insert blanks according to shiftwidth.
+set smarttab          "Insert blanks according to shiftwidth
 set showmatch         "When a bracket is inserted, briefly jump to matching one
 set splitright        "New buffers open on the right side of current buffer
-set splitbelow        "New buffers open below current buffer 
+set splitbelow        "New buffers open below current buffer
 set textwidth=78      "Max width of text inserted.  '0' disables
 set wildmenu          "Turns command-line completion on
 set wildignore=*~,.git,tmp,_site,*.log	"Matching files ignored
@@ -80,7 +80,7 @@ call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
-set backup 
+set backup
 
 
 " Resize splits when vim is resized
@@ -121,7 +121,7 @@ vnoremap <D-h> <gv
 vnoremap <D-l> >gv
 
 "Shortcuts
-" Toggle `set list`
+" Toggle 'set list'
 nmap <leader>l :set list!<CR>
 " Edit vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
