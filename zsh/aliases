@@ -10,6 +10,7 @@ alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gh='git hist '
 alias gist='git hist '
+alias gitup='git submodule foreach git pull origin master'
 
 alias got='git '
 alias get='git '
