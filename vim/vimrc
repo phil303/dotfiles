@@ -65,6 +65,7 @@ set number            "Row numbers
 set statusline=%F%m%r%h%w
 set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=\ %#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%=(%{&ff}/%Y)
 set statusline+=\ (line\ %l\/%L,\ col\ %c)
@@ -130,13 +131,19 @@ nmap <leader>l :set list!<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
 
-" Add Ctrl-n shortcut for NERDtree
-" open NERDTree in folder in active buffer
+" Plugins
+" NERDTree
 nmap <silent> <c-n> :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize=22
 
-" To get tab to work again when no snippets are found!
-let g:snipMate = {'no_match_completion_feedkeys_chars': "\<tab>" }
+" Snipmate
+let g:snipMate = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
 
 " Command-t
 let g:CommandTMatchWindowAtTop = 1
+
+" Syntastic
+let g:syntastic_enable_signs = 1
+let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
+let g:syntastic_auto_loc_list = 2
