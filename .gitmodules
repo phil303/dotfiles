@@ -38,3 +38,4 @@
 [submodule "vim/bundle/recover"]
 	path = vim/bundle/recover
 	url = git://github.com/chrisbra/Recover.vim.git
+  ignore = dirty
