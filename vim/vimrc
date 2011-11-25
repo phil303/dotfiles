@@ -63,6 +63,7 @@ set number            "Row numbers
 
 " Status line
 set statusline=%F%m%r%h%w
+set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=\ %#warningmsg#
 set statusline+=%*
 set statusline+=%=(%{&ff}/%Y)
