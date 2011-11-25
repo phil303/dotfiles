@@ -108,8 +108,8 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " Keep search matches in middle of window
-nnoremap n nzzzy
-nnoremap N Nzzzy
+nnoremap <silent> n nzzzv:call PulseCursorLine()<cr>
+nnoremap <silent> N Nzzzv:call PulseCursorLine()<cr>
 " Move a line of text using Alt+[jk], indent with Alt+[hl]
 nnoremap <D-j> :m+<CR>==
 nnoremap <D-k> :m-2<CR>==
@@ -147,3 +147,62 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
 let g:syntastic_auto_loc_list = 2
+
+
+
+" Experimental Test Functions
+function! PulseCursorLine()       "From Steve Losh vimrc
+    let current_window = winnr()
+
+    windo set nocursorline
+    execute current_window . 'wincmd w'
+
+    setlocal cursorline
+
+    redir => old_hi
+        silent execute 'hi CursorLine'
+    redir END
+    let old_hi = split(old_hi, '\n')[0]
+    let old_hi = substitute(old_hi, 'xxx', '', '')
+
+    hi CursorLine guibg=#2a2a2a
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#333333
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#3a3a3a
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#444444
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#4a4a4a
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#444444
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#3a3a3a
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#333333
+    redraw
+    sleep 5m
+
+    hi CursorLine guibg=#2a2a2a
+    redraw
+    sleep 5m
+
+    execute 'hi ' . old_hi
+
+    windo set nocursorline
+    execute current_window . 'wincmd w'
+endfunction
