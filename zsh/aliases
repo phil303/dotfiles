@@ -17,3 +17,4 @@ alias get='git '
 
 # add quick jump to ruby directory
 alias cdr='~/Documents/Programming/Ruby'  
+alias rp='ruby -r pry '
