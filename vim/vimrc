@@ -129,6 +129,11 @@ vnoremap <D-l> >gv
 nmap <leader>l :set list!<CR>
 " Edit vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
+" Git diff
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gw :Gwrite<CR>
 
 
 " Plugins
