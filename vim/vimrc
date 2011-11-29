@@ -138,8 +138,8 @@ nmap <leader>gw :Gwrite<CR>
 
 " Plugins
 " NERDTree
-nmap <silent> <c-n> :NERDTreeToggle %:p:h<CR>
-let g:NERDTreeWinSize=22
+nmap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
+let g:NERDTreeWinSize = 22
 
 " Snipmate
 let g:snipMate = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
@@ -152,6 +152,10 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
 let g:syntastic_auto_loc_list = 2
+
+" Gundo
+nnoremap <silent> <leader>u :GundoToggle<CR>
+let g:gundo_right = 1
 
 
 
