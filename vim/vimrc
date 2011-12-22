@@ -20,7 +20,7 @@ set wildmode=list:longest     "When more than one match, list all matches
 set wrap              "Wraps text
 set linebreak         "Wrap breaks at word boundaries
 set virtualedit+=block  "Don't get.  Most people recommend though
-set autochdir         "Change working directory to that of the file opened
+"set autochdir         "Change working directory to that of the file opened
 set autoindent        "Indented lines have the same indent level
 set autoread          "Externally updated files are automatically read
 set autowrite         "Autosave modified buffers when switching to another
