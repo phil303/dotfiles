@@ -25,7 +25,7 @@ SAVEHIST=1000
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails3 ruby heroku osx rvm brew gem)
+plugins=(git rails3 ruby heroku osx rvm brew gem codedir)
 
 source $ZSH/oh-my-zsh.sh
 
