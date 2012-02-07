@@ -53,3 +53,7 @@
 	path = vim/bundle/gundo
 	url = git://github.com/vim-scripts/Gundo.git
   ignore = dirty
+[submodule "vim/bundle/smartusline"]
+	path = vim/bundle/smartusline
+	url = git://github.com/molok/vim-smartusline.git
+  ignore = dirty
