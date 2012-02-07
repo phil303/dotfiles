@@ -15,5 +15,8 @@ alias gitup='git submodule foreach git pull origin master'
 alias got='git '
 alias get='git '
 
-# add quick jump to ruby directory
+# Quick jump to ruby directory
 alias rp='ruby -r pry '
+
+# Quick open of Rails Learning Checklist
+alias learn='mvim ~/Code/Ruby/things_to_work_on/README.md'
