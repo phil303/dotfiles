@@ -13,6 +13,10 @@ To use for installation on a new machine.  Based on Ryan Bates and Tim Pope dotf
   
   git submodule foreach git pull origin master
 
+  OR just 
+
+  `gitup`
+
 == Environment
 
 Switching to ZSH from bash shell.
