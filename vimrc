@@ -123,13 +123,15 @@ vnoremap <D-j> :m'>+<CR>gv=gv
 vnoremap <D-k> :m-2<CR>gv=gv
 vnoremap <D-h> <gv
 vnoremap <D-l> >gv
+" Map autocomplete to tab
+imap <Tab> <C-N>
 
 "Shortcuts
 " Toggle 'set list'
 nmap <leader>l :set list!<CR>
 " Edit vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-" Git diff
+" Git
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit<CR>
@@ -158,6 +160,8 @@ let g:syntastic_auto_loc_list = 2
 nnoremap <silent> <leader>u :GundoToggle<CR>
 let g:gundo_right = 1
 
+" SnipMate
+let g:snips_trigger_key = '<C-Tab>'
 
 
 " Experimental Test Functions
