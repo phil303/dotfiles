@@ -1,7 +1,13 @@
+" Section - Options {{{1
+" ----------------------
+" Pathogen Settings {{{2
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
+
+" }}}2
+" General Settings
 set nocompatible
 
 set encoding=utf-8    "Default encoding set to utf-8
@@ -58,10 +64,9 @@ set wildignore=*~,.git,tmp,_site,*.log	"Matching files ignored
 set noerrorbells      "Default off. Turn off audible bell
 set visualbell        "Default off.  Turn on visual bell
 set number            "Row numbers
+set foldmethod=marker "Folding on markers
 
-
-
-" Status line
+" Status line {{{2
 set statusline=%F%m%r%h%w
 set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=\ %#warningmsg#
@@ -69,34 +74,32 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%=(%{&ff}/%Y)
 set statusline+=\ (line\ %l\/%L,\ col\ %c)
- 
+" }}}2
 
-
-" Set colorscheme
+" Set colorscheme {{{2
 syntax enable
 set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
+"}}}2
 
-
-
-" Backups
+" Backups {{{2
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 set backup
+" }}}2
 
-
-" Resize splits when vim is resized
+" Resize splits when vim is resized {{{2
 autocmd VimResized * exe "normal! \<c-w>="
 " Jump to last known cursor position
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+" }}}2
 
-
-" Mappings
+" Mappings {{{1
 let mapleader = ","
 
 imap hh =>
@@ -139,8 +142,7 @@ nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gw :Gwrite<CR>
 
-
-" Plugins
+" Plugins {{{1
 " NERDTree
 nmap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize = 22
@@ -167,8 +169,7 @@ let g:gundo_right = 1
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 
-
-" Experimental Test Functions
+" Experimental Test Functions {{{1
 function! PulseCursorLine()       "From Steve Losh vimrc
     let current_window = winnr()
 
@@ -224,3 +225,4 @@ function! PulseCursorLine()       "From Steve Losh vimrc
     windo set nocursorline
     execute current_window . 'wincmd w'
 endfunction
+" }}}1
