@@ -124,7 +124,9 @@ vnoremap <D-k> :m-2<CR>gv=gv
 vnoremap <D-h> <gv
 vnoremap <D-l> >gv
 " Map autocomplete to tab
-imap <Tab> <C-N>
+imap qq <C-X><C-U>
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
 "Shortcuts
 " Toggle 'set list'
@@ -146,7 +148,7 @@ let g:NERDTreeChDirMode = 2       "Change CWD to NERDTree root
 
 " Snipmate
 let g:snipMate = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
-let g:snips_trigger_key = '<C-Tab>'
+let g:snips_trigger_key = '<Tab>'
 
 " Command-t
 let g:CommandTMatchWindowAtTop = 1
