@@ -125,8 +125,13 @@ inoremap <D-l> <Esc>>>`]a
 vnoremap <D-j> :m'>+<CR>gv=gv
 vnoremap <D-k> :m-2<CR>gv=gv
 vnoremap <D-h> <gv
+" Respect destination indentation level when pasting
+nnoremap <leader>p p
+nnoremap <leader>P P
+nnoremap p p'[v']=
+nnoremap P P'[v']=
 vnoremap <D-l> >gv
-" Map autocomplete to tab
+" Map user defined autocomplete to qq
 imap qq <C-X><C-U>
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
@@ -165,9 +170,13 @@ let g:syntastic_auto_loc_list = 2
 nnoremap <silent> <leader>u :GundoToggle<CR>
 let g:gundo_right = 1
 
-" Ruby/Rails plugins
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_rails = 1
+" Omnicomplete for Ruby
+if has("autocmd")
+  autocmd Filetype ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd Filetype ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd Filetype ruby,eruby let g:rubycomplete_classes_in_global = 0
+endif
 
 " Experimental Test Functions {{{1
 function! PulseCursorLine()       "From Steve Losh vimrc
