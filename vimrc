@@ -99,6 +99,11 @@ autocmd BufReadPost *
     \ endif
 " }}}2
 
+" RubyComplete{{{2
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_rails = 1
+" }}}2
+
 " Mappings {{{1
 let mapleader = ","
 
@@ -131,10 +136,24 @@ nnoremap <leader>P P
 nnoremap p p'[v']=
 nnoremap P P'[v']=
 vnoremap <D-l> >gv
-" Map user defined autocomplete to qq
-imap qq <C-X><C-U>
+" Autocompletion (based off lucapette vimrc)
+"" Omni completion with ctrl-space
+inoremap <expr> <C-o> pumvisible() \|\| &omnifunc == '' ?
+            \ "\<lt>C-n>" :
+            \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+
+"" User defined completion with ctrl-u.
+inoremap <expr> <C-u> pumvisible() \|\| &completefunc == '' ?
+            \ "\<lt>C-n>" :
+            \ "\<lt>C-x>\<lt>C-u><c-r>=pumvisible() ?" .
+            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+"" make ctrl-j/ctrl-k do the same thing in all popup menus
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+
 
 "Shortcuts
 " Toggle 'set list'
@@ -172,14 +191,6 @@ let g:gundo_right = 1
 
 " Vim-Ruby-docs
 let g:ruby_doc_command='open'
-
-" Omnicomplete for Ruby
-if has("autocmd")
-  autocmd Filetype ruby,eruby set omnifunc=rubycomplete#Complete
-  autocmd Filetype ruby,eruby let g:rubycomplete_buffer_loading = 1
-  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-  autocmd Filetype ruby,eruby let g:rubycomplete_classes_in_global = 0
-endif
 
 " Experimental Test Functions {{{1
 function! PulseCursorLine()       "From Steve Losh vimrc
