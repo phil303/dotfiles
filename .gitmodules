@@ -57,3 +57,7 @@
 	path = vim/bundle/smartusline
 	url = git://github.com/molok/vim-smartusline.git
   ignore = dirty
+[submodule "vim/bundle/vim-ruby-doc"]
+	path = vim/bundle/vim-ruby-doc
+	url = git://github.com/lucapette/vim-ruby-doc.git
+  ignore = dirty

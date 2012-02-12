@@ -170,6 +170,9 @@ let g:syntastic_auto_loc_list = 2
 nnoremap <silent> <leader>u :GundoToggle<CR>
 let g:gundo_right = 1
 
+" Vim-Ruby-docs
+let g:ruby_doc_command='open'
+
 " Omnicomplete for Ruby
 if has("autocmd")
   autocmd Filetype ruby,eruby set omnifunc=rubycomplete#Complete
