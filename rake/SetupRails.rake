@@ -6,14 +6,14 @@ task :newrails do
   if File.exist? "Gemfile"
     @rails_version = File.open('Gemfile', 'r').readlines.
       grep(/gem 'rails'/).to_s.match(/\d+.\d+.\d+(.\w+)?/)[0]
-    File.open('Gemfile', 'w') do |f|
+    gemfile = File.open('Gemfile', 'r').readlines
       puts "Writing Gemfile..."
       puts "Rails version to be written: #{@rails_version}"
-      f.puts(gemfile_contents)
+      append_gemfile(gemfile)
+      f = File.open('Gemfile', 'w')
+      f.puts gemfile
       f.close
-      puts "Gemfile written."
-    end
-    system %Q{bundle install --without production}
+      system %Q{bundle install --without production}
   end
 
   # Create list of gems
@@ -59,13 +59,13 @@ task :newrails do
   # Guard Operations
   if @exist_list["guard-rspec"]
     if @exist_list["spork"] && @exist_list["guard-spork"]
-      system %Q{guard init spork}
+      system %Q{bundle exec guard init spork}
     end
     if @exist_list["rspec"]
-      system %Q{guard init rspec}
+      system %Q{bundle exec guard init rspec}
     end
     if @exist_list["cucumber"]
-      system %Q{guard init cucumber}
+      system %Q{bundle exec guard init cucumber}
     end
     guardfile = File.open("Guardfile", "r").readlines
     guardfile[guardfile.index("guard 'rspec', :version => 2 do\n")] = 
@@ -94,14 +94,14 @@ task :newrails do
   end
 
   # Haml Operations
-  if @exist_list["haml"] && @exist_list["haml-rails"]
-    puts "Setting up scaffold generator to generate haml views..."
-    haml_add = File.open("./config/application.rb", "r").readlines
-    haml_add[haml_add.index("  end\n")-1] << haml_contents
-    f = File.open("./config/application.rb", "w")
-    f.puts haml_add
-    f.close
-  end
+  #if @exist_list["haml"] && @exist_list["haml-rails"]
+    #puts "Setting up scaffold generator to generate haml views..."
+    #haml_add = File.open("./config/application.rb", "r").readlines
+    #haml_add[haml_add.index("  end\n")-1] << haml_contents
+    #f = File.open("./config/application.rb", "w")
+    #f.puts haml_add
+    #f.close
+  #end
 end
 
 def haml_contents
@@ -201,47 +201,10 @@ def gem_exist?(check_list)
   end
 end
 
-def gemfile_contents
-"source 'http://rubygems.org'
-
-gem 'rails', '#{@rails_version}'
-gem 'sqlite3'
-gem 'heroku'
-
-group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
-end
-
-gem 'jquery-rails'
-gem 'haml', :group => [:development, :test]
-gem 'haml-rails', :group => [:development, :test]
-
-group :development do
-  gem 'rspec-rails'
-  gem 'annotate'
-  gem 'pry'
-  gem 'sqlite3'
-end
-
-group :test do 
-  gem 'rspec'
-  gem 'capybara'
-  gem 'factory_girl_rails'
-  gem 'sqlite3'
-  gem 'spork', '> 0.9.0.rc'
-  gem 'guard-spork'
-  gem 'guard-rspec'
-  gem 'faker', :require => false
-
-  group :darwin do
-    gem 'rb-fsevent', :require => false
-    gem 'growl', :require => false
-  end
-end
-
-group :production do
-  gem 'pg'        # for heroku depoloyment
-end"
+def append_gemfile(gemfile)
+  gemfile << "\ngem 'haml', :group => [:development, :test]"
+  gemfile << "gem 'haml-rails', :group => [:development, :test]"
+  gemfile << "\ngem 'heroku'\n\n"
+  gemfile << "group :development do\n\tgem 'rspec-rails'\n\tgem 'annotate', '~> 2.4.1.beta'\n\tgem 'pry'\n\tgem 'sqlite3'\nend"
+  gemfile << "group :test do\n\tgem 'rspec'\n\tgem 'capybara'\n\tgem 'factory_girl_rails'\n\tgem 'sqlite3'\n\tgem 'spork', '> 0.9.0.rc'\n\tgem 'guard-spork'\n\tgem 'guard-rspec'\n\tgem 'faker', :require => false\n\n\tgroup :darwin do\n\tgem 'rb-fsevent', :require => false\n\tgem 'growl', :require => false\n\tend\nend\n\ngroup :production do\n\tgem 'pg'        # for heroku depoloyment\nend"
 end
