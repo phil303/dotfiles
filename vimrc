@@ -115,6 +115,9 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+" Creat empty line without leaving normal mode
+nnoremap <Enter> m`o<Esc>k``
+
 " Keep search matches in middle of window
 nnoremap <silent> n nzzzv:call PulseCursorLine()<cr>
 nnoremap <silent> N Nzzzv:call PulseCursorLine()<cr>
