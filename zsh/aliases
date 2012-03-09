@@ -1,3 +1,6 @@
+# tmux
+alias tmux='TERM=screen-256color-bce tmux'
+
 # adds git aliases
 alias gs='git status '
 alias gss='git status -s '
