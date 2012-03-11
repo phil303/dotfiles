@@ -20,7 +20,6 @@ set undoreload=10000  "Save the whole buffer for undo when reloading it.
 set nolist            "Show invisible symbols as characters.
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪       "When breakline is present, show argument as character
-set shiftround        "Round indent to nearest tabstop
 set wildmode=list:longest     "When more than one match, list all matches
                               "and complete first match.
 set wrap              "Wraps text
@@ -51,6 +50,7 @@ set matchtime=3       "Argument is the tenths of a second until matching parens
 set mouse=a           "Enable mouse in all modes
 set ruler             "Show the cursor position (row,column)
 set shiftwidth=2      "Number of spaces used for autoindent
+set shiftround        "Round indent to multiple of 'shiftwidth'
 set expandtab         "Tabs are expanded as spaces
 set tabstop=2         "Number of spaces tab accounts for
 set softtabstop=2     "Tabs count for 2 spaces when editing
