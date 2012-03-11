@@ -13,7 +13,7 @@ set nocompatible
 set encoding=utf-8    "Default encoding set to utf-8
 set nomodeline        "Modelines for diff ft handling but are a security risk.
 set scrolloff=3       "Scroll offset equal to 3 lines
-set showmode          "Vim default on. Displays what mode on last line.
+set showmode          "Vim default on. Vi off. Displays mode in command line.
 set fillchars=diff:\  "'\' replaces '-' in Vim diff
 set undofile          "Vim automatically saves undo history to an undo file
 set undoreload=10000  "Save the whole buffer for undo when reloading it.
