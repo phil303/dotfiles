@@ -20,8 +20,7 @@ set undoreload=10000  "Save the whole buffer for undo when reloading it.
 set nolist            "Show invisible symbols as characters.
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪       "When breakline is present, show argument as character
-set wildmode=list:longest     "When more than one match, list all matches
-                              "and complete first match.
+set wildmode=list:longest,full      "act more like bash
 set wrap              "Wraps text
 set linebreak         "Wrap breaks at word boundaries
 set virtualedit+=block  "Don't get.  Most people recommend though
@@ -54,7 +53,7 @@ set shiftround        "Round indent to multiple of 'shiftwidth'
 set expandtab         "Tabs are expanded as spaces
 set tabstop=2         "Number of spaces tab accounts for
 set softtabstop=2     "Tabs count for 2 spaces when editing
-set smarttab          "Insert blanks according to shiftwidth
+set smarttab          "sw at the start of the line, sts everywhere else
 set showmatch         "When a bracket is inserted, briefly jump to matching one
 set splitright        "New buffers open on the right side of current buffer
 set splitbelow        "New buffers open below current buffer
