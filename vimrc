@@ -20,6 +20,8 @@ set undoreload=10000  "Save the whole buffer for undo when reloading it.
 set nolist            "Show invisible symbols as characters.
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪       "When breakline is present, show argument as character
+set wildmenu          "Turns command-line completion on
+set wildignore=*~,.git,tmp,_site,*.log	"Matching files ignored
 set wildmode=list:longest,full      "act more like bash
 set wrap              "Wraps text
 set linebreak         "Wrap breaks at word boundaries
@@ -58,8 +60,6 @@ set showmatch         "When a bracket is inserted, briefly jump to matching one
 set splitright        "New buffers open on the right side of current buffer
 set splitbelow        "New buffers open below current buffer
 set textwidth=78      "Max width of text inserted.  '0' disables
-set wildmenu          "Turns command-line completion on
-set wildignore=*~,.git,tmp,_site,*.log	"Matching files ignored
 set noerrorbells      "Default off. Turn off audible bell
 set visualbell        "Default off.  Turn on visual bell
 set number            "Row numbers
