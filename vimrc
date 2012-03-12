@@ -22,7 +22,7 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪       "When breakline is present, show argument as character
 set wildmenu          "Turns command-line completion on
 set wildignore=*~,.git,tmp,_site,*.log	"Matching files ignored
-set wildmode=list:longest,full      "act more like bash
+set wildmode=list:longest,full          "act more like bash
 set wrap              "Wraps text
 set linebreak         "Wrap breaks at word boundaries
 set virtualedit+=block  "Don't get.  Most people recommend though
