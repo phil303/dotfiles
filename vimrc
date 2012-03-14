@@ -107,6 +107,10 @@ let g:rubycomplete_rails = 1
 let mapleader = ","
 
 imap hh =>
+
+" Yank selectin ot system keyboard
+vnoremap Y "*y
+
 " Esc to remove search highlighting
 nnoremap <silent> <esc> :noh<return><esc>
 " Use ctrl+hjkl to move between window splits
