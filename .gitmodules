@@ -61,3 +61,9 @@
 	path = vim/bundle/vim-ruby-doc
 	url = git://github.com/lucapette/vim-ruby-doc.git
   ignore = dirty
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "vim/bundle/vimrepress"]
+	path = vim/bundle/vimrepress
+	url = git://github.com/vim-scripts/VimRepress.git
