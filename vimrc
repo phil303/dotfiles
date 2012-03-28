@@ -197,7 +197,6 @@ let g:gundo_right = 1
 
 " Vim-Ruby-docs
 let g:ruby_doc_command='open'
-
 " Experimental Test Functions {{{1
 function! PulseCursorLine()       "From Steve Losh vimrc
     let current_window = winnr()
