@@ -106,19 +106,21 @@ let g:rubycomplete_rails = 1
 " Mappings {{{1
 let mapleader = ","
 
-imap hh =>
+inoremap hh =>
 
 " Yank selectin ot system keyboard
 vnoremap Y "*y
 
 " Esc to remove search highlighting
 nnoremap <silent> <esc> :noh<return><esc>
+
 " Use ctrl+hjkl to move between window splits
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-" Creat empty line without leaving normal mode
+
+" Create empty line without leaving normal mode
 nnoremap <Enter> m`o<Esc>k``
 
 " Keep search matches in middle of window
@@ -136,12 +138,14 @@ inoremap <D-l> <Esc>>>`]a
 vnoremap <D-j> :m'>+<CR>gv=gv
 vnoremap <D-k> :m-2<CR>gv=gv
 vnoremap <D-h> <gv
+
 " Respect destination indentation level when pasting
 nnoremap <leader>p p
 nnoremap <leader>P P
 nnoremap p p'[v']=
 nnoremap P P'[v']=
 vnoremap <D-l> >gv
+
 " Autocompletion (based off lucapette vimrc)
 "" Omni completion with ctrl-space
 inoremap <expr> <C-o> pumvisible() \|\| &omnifunc == '' ?
@@ -163,18 +167,18 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
 "Shortcuts
 " Toggle 'set list'
-nmap <leader>l :set list!<CR>
+nnoremap <leader>l :set list!<CR>
 " Edit vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
 " Git
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gw :Gwrite<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gw :Gwrite<CR>
 
 " Plugins {{{1
 " NERDTree
-nmap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
+nnoremap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize = 22
 let g:NERDTreeChDirMode = 2       "Change CWD to NERDTree root
 
