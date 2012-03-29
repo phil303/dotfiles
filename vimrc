@@ -1,4 +1,4 @@
-" Section - Options {{{1
+" Options {{{1
 " ----------------------
 " Pathogen Settings {{{2
 filetype off
@@ -63,7 +63,12 @@ set textwidth=78      "Max width of text inserted.  '0' disables
 set noerrorbells      "Default off. Turn off audible bell
 set visualbell        "Default off.  Turn on visual bell
 set number            "Row numbers
-set foldmethod=marker "Folding on markers
+
+" Fold for only Vimscript
+augroup filetype_vim
+  autocmd!
+  autocmd Filetype vim setlocal foldmethod=marker
+augroup end
 
 " Status line {{{2
 set statusline=%F%m%r%h%w
@@ -103,12 +108,25 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 " }}}2
 
+" Abbreviations {{{1
+iabbrev hh =>
+iabbrev @@ philaquilina@gmail.com
+iabbrev ww philaquilina.com
+
 " Mappings {{{1
 let mapleader = ","
 
-inoremap hh =>
+" Test different escape
+inoremap jk <Esc>
 
-" Yank selectin ot system keyboard
+" Better beginning/end of line movements
+nnoremap H ^
+nnoremap L $
+
+" Remap K to split lines (Steve Losh)
+nnoremap K i<CR><Esc><Right>mwgk:silent! s/\v +$//<CR>:noh<CR>`w
+
+" Yank selection ot system keyboard
 vnoremap Y "*y
 
 " Esc to remove search highlighting
@@ -170,6 +188,7 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 nnoremap <leader>l :set list!<CR>
 " Edit vimrc file
 nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 " Git
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
