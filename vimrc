@@ -194,6 +194,8 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gw :Gwrite<CR>
+" Convert Markdown to html (need "Markdown.pl in /usr/local/bin)
+nnoremap <leader>md :%! /usr/local/bin/Markdown.pl --html4tags<CR>
 
 " Plugins {{{1
 " NERDTree
