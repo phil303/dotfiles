@@ -187,8 +187,8 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 " Toggle 'set list'
 nnoremap <leader>l :set list!<CR>
 " Edit vimrc file
-nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :execute "split" resolve(expand($MYVIMRC))<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR> :echo "Sourced!"<CR>
 " Git
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
