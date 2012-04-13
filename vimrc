@@ -117,7 +117,7 @@ iabbrev ww philaquilina.com
 let mapleader = ","
 
 " Test different escape
-inoremap jk <Esc>
+inoremap jj <Esc>
 
 " Better beginning/end of line movements
 nnoremap H ^
