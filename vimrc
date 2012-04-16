@@ -207,8 +207,8 @@ let g:NERDTreeChDirMode = 2       "Change CWD to NERDTree root
 let g:snipMate = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
 let g:snips_trigger_key = '<Tab>'
 
-" Command-t
-let g:CommandTMatchWindowAtTop = 1
+" CtrlP
+nnoremap <silent> <leader>p :CtrlP<CR>
 
 " Syntastic
 let g:syntastic_enable_signs = 1
