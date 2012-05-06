@@ -80,13 +80,14 @@ else
 endif
 
 " Status line {{{2
-set statusline=%F%m%r%h%w
-set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
-set statusline+=\ %#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%=(%{&ff}/%Y)
-set statusline+=\ (line\ %l\/%L,\ col\ %c)
+" Turned off for Powerline
+"set statusline=%F%m%r%h%w
+"set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
+"set statusline+=\ %#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"set statusline+=%=(%{&ff}/%Y)
+"set statusline+=\ (line\ %l\/%L,\ col\ %c)
 " }}}2
 
 " Set colorscheme {{{2
