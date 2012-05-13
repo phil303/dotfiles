@@ -48,7 +48,6 @@ set incsearch         "matches as you type
 set laststatus=2      "2 means all windows will have a status line
 set magic             "Default on. Allows for special char. in search patterns
 set matchtime=3       "Argument is the tenths of a second until matching parens
-set mouse=a           "Enable mouse in all modes
 set ruler             "Show the cursor position (row,column)
 set shiftwidth=2      "Number of spaces used for autoindent
 set shiftround        "Round indent to multiple of 'shiftwidth'
@@ -77,6 +76,15 @@ if exists('$TMUX')
 else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+if has('mouse')
+  set mouse=a
+  if &term =~ "xterm" || &term =~ "screen"
+    autocmd VimEnter * set ttymouse=xterm2
+    autocmd FocusGained * set ttymouse=xterm2
+    autocmd BufEnter * set ttymouse=xterm2
+  endif
 endif
 
 " Status line {{{2
