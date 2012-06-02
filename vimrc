@@ -233,6 +233,7 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
 let g:syntastic_auto_loc_list = 2
+nnoremap <silent> <leader>e :Errors<CR>
 
 " Gundo
 nnoremap <silent> <leader>u :GundoToggle<CR>
