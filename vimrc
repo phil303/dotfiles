@@ -121,13 +121,26 @@ autocmd BufReadPost *
     \ endif
 " }}}2
 
-" RubyComplete{{{2
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_rails = 1
+" Autocompletion{{{2
+if has('autocmd')
+  autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType python set omnifunc=pythoncomplete#Complete
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+  autocmd FileType c set omnifunc=ccomplete#Complete
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete " may require ruby compiled in
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+endif
 " }}}2
 
 " Abbreviations {{{1
 iabbrev hh =>
+iabbrev uu _
+iabbrev aa @
 iabbrev @@ philaquilina@gmail.com
 iabbrev ww philaquilina.com
 
@@ -228,6 +241,7 @@ let g:snips_trigger_key = '<Tab>'
 " CtrlP
 nnoremap <silent> <leader>p :CtrlP<CR>
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F5>','<c-r>'] }
+let g:ctrlp_reuse_window = 'NERD_tree_2'
 
 " Syntastic
 let g:syntastic_enable_signs = 1
