@@ -25,4 +25,4 @@ alias rp='ruby -r pry '
 alias learn='mvim ~/Code/Ruby/things_to_work_on/README.md'
 
 # Use to find rails server accidentally left running
-alias rl='lsof | grep IPv4'
+alias rl='lsof -wni tcp:3000'
