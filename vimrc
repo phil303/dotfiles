@@ -227,6 +227,7 @@ let g:snips_trigger_key = '<Tab>'
 
 " CtrlP
 nnoremap <silent> <leader>p :CtrlP<CR>
+let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F5>','<c-r>'] }
 
 " Syntastic
 let g:syntastic_enable_signs = 1
