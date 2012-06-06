@@ -139,16 +139,16 @@ endif
 
 " Abbreviations {{{1
 iabbrev hh =>
-iabbrev uu _
-iabbrev aa @
 iabbrev @@ philaquilina@gmail.com
 iabbrev ww philaquilina.com
 
 " Mappings {{{1
 let mapleader = ","
 
-" Test different escape
+" Better hand movements
 inoremap jj <Esc>
+inoremap uu _
+inoremap aa @
 
 " Better beginning/end of line movements
 nnoremap H ^
