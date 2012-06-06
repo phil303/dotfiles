@@ -30,6 +30,7 @@ plugins=(git rails3 ruby heroku osx rvm brew gem codedir blogdir dotfilesdir)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+# In order for Postgresql to work /usr/local/bin must come before /usr/bin
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin
 
 # set RVM to run in shell sessions by default
