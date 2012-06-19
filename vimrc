@@ -157,6 +157,9 @@ nnoremap L $
 " Remap K to split lines (Steve Losh)
 nnoremap K i<CR><Esc><Right>mwgk:silent! s/\v +$//<CR>:noh<CR>`w
 
+" Remap J to split lines (Steve Losh)
+nnoremap J mzJ`z
+
 " Yank selection ot system keyboard
 vnoremap Y "*y
 
