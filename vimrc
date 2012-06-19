@@ -62,6 +62,7 @@ set textwidth=78      "Max width of text inserted.  '0' disables
 set noerrorbells      "Default off. Turn off audible bell
 set visualbell        "Default off.  Turn on visual bell
 set number            "Row numbers
+set clipboard=unnamed "all operations work with OS clipboard
 
 " Fold for only Vimscript
 augroup filetype_vim
