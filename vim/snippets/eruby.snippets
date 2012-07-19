@@ -108,6 +108,6 @@ snippet rf
 snippet rt
 	<%= render :template => "${1:file}"${2} %>
 snippet slt
-	<%= stylesheet_link_tag ${1::all}, :cache => ${2:true} %>
-snippet sslt
 	<%= stylesheet_link_tag "${1}" %>
+snippet sltc
+	<%= stylesheet_link_tag ${1::all}, :cache => ${2:true} %>
