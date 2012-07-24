@@ -26,3 +26,4 @@ alias learn='mvim ~/Code/Ruby/things_to_work_on/README.md'
 
 # Use to find rails server accidentally left running
 alias rl='lsof -wni tcp:3000'
+alias pgstatus='pg_ctl status -D /usr/local/var/postgres/'
