@@ -246,6 +246,7 @@ let g:snips_trigger_key = '<Tab>'
 nnoremap <silent> <leader>p :CtrlP<CR>
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F5>','<c-r>'] }
 let g:ctrlp_reuse_window = 'NERD_tree_2'
+let g:ctrlp_working_path_mode = 2  "Find nearest parent folder with source control
 
 " Syntastic
 let g:syntastic_enable_signs = 1
