@@ -235,24 +235,24 @@ nnoremap <leader>md :%! /usr/local/bin/Markdown.pl --html4tags<CR>
 " Plugins {{{1
 " NERDTree
 nnoremap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
-let g:NERDTreeWinSize = 22
+let g:NERDTreeWinSize   = 22
 let g:NERDTreeChDirMode = 2       "Change CWD to NERDTree root
 
 " Snipmate
-let g:snipMate = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
+let g:snipMate          = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
 let g:snips_trigger_key = '<Tab>'
 
 " CtrlP
 nnoremap <silent> <leader>p :CtrlP<CR>
-let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<F5>','<c-r>'] }
-let g:ctrlp_reuse_window = 'NERD_tree_2'
+let g:ctrlp_prompt_mappings   = { 'PrtClearCache()': ['<F5>','<c-r>'] }
+let g:ctrlp_reuse_window      = 'NERD_tree_2'
 let g:ctrlp_working_path_mode = 2  "Find nearest parent folder with source control
 
 " Syntastic
-let g:syntastic_enable_signs = 1
+let g:syntastic_enable_signs       = 1
 let g:syntastic_disabled_filetypes = ['html']
-let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
-let g:syntastic_auto_loc_list = 2
+let g:syntastic_stl_format         = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
+let g:syntastic_auto_loc_list      = 2
 nnoremap <silent> <leader>e :Errors<CR>
 
 " Gundo
@@ -260,7 +260,7 @@ nnoremap <silent> <leader>u :GundoToggle<CR>
 let g:gundo_right = 1
 
 " Vim-Ruby-docs
-let g:ruby_doc_command='open'
+let g:ruby_doc_command ='open'
 
 " Experimental Test Functions {{{1
 function! PulseCursorLine()       "From Steve Losh vimrc
