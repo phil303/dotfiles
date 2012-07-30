@@ -9,11 +9,6 @@ To use for installation on a new machine.  Based on Ryan Bates and Tim Pope dotf
     rake install
     git submodule init
     gitup
-
-## Environment
-
-  Switching to ZSH from bash shell.
-
     chsh -s /bin/zsh
 
 ## Updating All Submodules
