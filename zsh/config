@@ -11,6 +11,7 @@ export ZSH_THEME="robbyrussell"
 
 # Comment this out to disable weekly auto-update checks
 export DISABLE_AUTO_UPDATE="true"
+export ZSH_CUSTOM="$HOME/.dotfiles/zsh/custom"
 
 HISTSIZE=1000
 SAVEHIST=1000
