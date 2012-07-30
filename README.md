@@ -1,21 +1,21 @@
-= Phil Aquilina Dot Files
+# Phil Aquilina Dot Files
 
 To use for installation on a new machine.  Based on Ryan Bates and Tim Pope dotfiles.
 
-== Installation
+## Installation
 
-  git clone git://github.com/phil303/dotfiles.git ~/.dotfiles
-  cd ~/.dotfiles
-  rake install
-  git submodule init
-  gitup
+    git clone git://github.com/phil303/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles
+    rake install
+    git submodule init
+    gitup
 
-== Environment
+## Environment
 
   Switching to ZSH from bash shell.
 
-  chsh -s /bin/zsh
+    chsh -s /bin/zsh
 
-== Updating All Submodules
+## Updating All Submodules
   
-  gitup
+    gitup
