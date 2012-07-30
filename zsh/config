@@ -34,12 +34,6 @@ PROMPT='%{$fg_bold[blue]%}➜ %{$fg_bold[cyan]%}%t %{$fg[yellow]%}${PWD/#$HOME/~
 
 RPROMPT='%{$fg_bold[yellow]%}%n%f%{$fg_bold[blue]%}@%{$fg_bold[yellow]%}%m%f%{$reset_color%}'
 
-# Original git prompt info
-# ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
-# ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-# ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
-# ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
-
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{154}±|%f%F{124}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}%B✘%b%F{154}|%f%{$reset_color%}"
