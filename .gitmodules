@@ -2,78 +2,78 @@
   path = zsh/oh-my-zsh
   url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/nerdcommenter"]
-	path = vim/bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
+  path = vim/bundle/nerdcommenter
+  url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+  path = vim/bundle/nerdtree
+  url = git://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/vim-ruby"]
-	path = vim/bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
+  path = vim/bundle/vim-ruby
+  url = git://github.com/vim-ruby/vim-ruby.git
   ignore = dirty
 [submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+  path = vim/bundle/vim-colors-solarized
+  url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/snipmate"]
-	path = vim/bundle/snipmate
-	url = git://github.com/garbas/vim-snipmate.git
+  path = vim/bundle/snipmate
+  url = git://github.com/garbas/vim-snipmate.git
 [submodule "vim/bundle/vim-addon-mw-utils"]
-	path = vim/bundle/vim-addon-mw-utils
-	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+  path = vim/bundle/vim-addon-mw-utils
+  url = git://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "vim/bundle/tlib_vim"]
-	path = vim/bundle/tlib_vim
-	url = git://github.com/tomtom/tlib_vim.git
+  path = vim/bundle/tlib_vim
+  url = git://github.com/tomtom/tlib_vim.git
 [submodule "vim/bundle/surround"]
-	path = vim/bundle/surround
-	url = git://github.com/tpope/vim-surround.git
+  path = vim/bundle/surround
+  url = git://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/repeat"]
-	path = vim/bundle/repeat
-	url = git://github.com/tpope/vim-repeat.git
+  path = vim/bundle/repeat
+  url = git://github.com/tpope/vim-repeat.git
 [submodule "vim/bundle/vim-rails"]
-	path = vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
+  path = vim/bundle/vim-rails
+  url = git://github.com/tpope/vim-rails.git
 [submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+  path = vim/bundle/fugitive
+  url = git://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/recover"]
-	path = vim/bundle/recover
-	url = git://github.com/chrisbra/Recover.vim.git
+  path = vim/bundle/recover
+  url = git://github.com/chrisbra/Recover.vim.git
   ignore = dirty
 [submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
+  path = vim/bundle/syntastic
+  url = git://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/matchit"]
-	path = vim/bundle/matchit
-	url = git://github.com/vim-scripts/matchit.zip.git
+  path = vim/bundle/matchit
+  url = git://github.com/vim-scripts/matchit.zip.git
   ignore = dirty
 [submodule "vim/bundle/endwise"]
-	path = vim/bundle/endwise
-	url = git://github.com/tpope/vim-endwise.git
+  path = vim/bundle/endwise
+  url = git://github.com/tpope/vim-endwise.git
 [submodule "vim/bundle/gundo"]
-	path = vim/bundle/gundo
-	url = git://github.com/vim-scripts/Gundo.git
+  path = vim/bundle/gundo
+  url = git://github.com/vim-scripts/Gundo.git
   ignore = dirty
 [submodule "vim/bundle/smartusline"]
-	path = vim/bundle/smartusline
-	url = git://github.com/molok/vim-smartusline.git
+  path = vim/bundle/smartusline
+  url = git://github.com/molok/vim-smartusline.git
   ignore = dirty
 [submodule "vim/bundle/vim-ruby-doc"]
-	path = vim/bundle/vim-ruby-doc
-	url = git://github.com/lucapette/vim-ruby-doc.git
+  path = vim/bundle/vim-ruby-doc
+  url = git://github.com/lucapette/vim-ruby-doc.git
   ignore = dirty
 [submodule "vim/bundle/vim-markdown"]
-	path = vim/bundle/vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
+  path = vim/bundle/vim-markdown
+  url = git://github.com/tpope/vim-markdown.git
   ignore = dirty
 [submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+  path = vim/bundle/ctrlp
+  url = git://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/powerline"]
-	path = vim/bundle/powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
+  path = vim/bundle/powerline
+  url = git://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/vim-coffeescript"]
-	path = vim/bundle/vim-coffeescript
-	url = git://github.com/kchmck/vim-coffee-script.git
+  path = vim/bundle/vim-coffeescript
+  url = git://github.com/kchmck/vim-coffee-script.git
 [submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
+  path = vim/bundle/vim-javascript
+  url = git://github.com/pangloss/vim-javascript.git
