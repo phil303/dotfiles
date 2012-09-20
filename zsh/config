@@ -35,5 +35,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%F{154}|"
 
 # In order for Postgresql (and other things) to work, /usr/local/bin must come before /usr/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin
+export PATH=/usr/local/bin:/usr/local/share/python:/usr/local/lib/ruby/gems/1.9.1/gems/sass-3.2.1/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
