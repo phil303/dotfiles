@@ -112,6 +112,12 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+# Print newlines
+snippet pn
+	print "\n\n\n"
+# Print for debugging
+snippet pd
+	print "${1:var}:", $1
 # python debugger (pdb)
 snippet pdb
 	import pdb; pdb.set_trace()
