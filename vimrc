@@ -126,6 +126,7 @@ autocmd BufReadPost *
 if has('autocmd')
   autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType python set omnifunc=pythoncomplete#Complete
+  autocmd Filetype python setlocal ai et sta sw=4 sts=4
   autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
   autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
