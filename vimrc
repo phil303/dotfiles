@@ -136,6 +136,7 @@ if has('autocmd')
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+  autocmd Filetype coffee setlocal ai et sta sw=4 sts=4
 endif
 " }}}2
 
