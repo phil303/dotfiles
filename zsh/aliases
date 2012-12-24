@@ -28,8 +28,9 @@ alias learn='mvim ~/Code/Ruby/things_to_work_on/README.md'
 alias rl='lsof -wni tcp:3000'
 
 # postgres
-alias pgstatus='pg_ctl status -D /db/postgres/'
+alias pgstatus='pg_ctl status -D /db/postgres'
 alias pgstart='pg_ctl -D /db/postgres -l /db/postgres/server.log start'
+alias pgstop='pg_ctl -D /db/postgres -l /db/postgres/server.log stop'
 alias pglist='ps -ef | grep postgres'
 
 # python virtualenvwrapper aliases
