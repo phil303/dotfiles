@@ -89,11 +89,11 @@
   path = vim/bundle/vim-coffeescript
   url = git://github.com/kchmck/vim-coffee-script.git
   ignore = dirty
-[submodule "vim/bundle/vim-javascript"]
-  path = vim/bundle/vim-javascript
-  url = git://github.com/pangloss/vim-javascript.git
-  ignore = dirty
 [submodule "vim/bundle/vim-python"]
 	path = vim/bundle/vim-python
 	url = git://github.com/gg/python.vim.git
+  ignore = dirty
+[submodule "vim/bundle/javascript-indent"]
+	path = vim/bundle/javascript-indent
+	url = git://github.com/vim-scripts/JavaScript-Indent.git
   ignore = dirty
