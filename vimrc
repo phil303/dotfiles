@@ -21,7 +21,7 @@ set nolist            "Show invisible symbols as characters.
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪       "When breakline is present, show argument as character
 set wildmenu          "Turns command-line completion on
-set wildignore=*~,.git,tmp,_site,*.log,.pyc	"Matching files ignored
+set wildignore=*~,.git,tmp,_site,*.log,*.pyc	"Matching files ignored
 set wildmode=list:longest,full          "act more like bash
 set wrap              "Wraps text
 set linebreak         "Wrap breaks at word boundaries
@@ -239,6 +239,7 @@ nnoremap <leader>md :%! /usr/local/bin/Markdown.pl --html4tags<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize   = 22
 let g:NERDTreeChDirMode = 2       "Change CWD to NERDTree root
+let g:NERDTreeIgnore = ['\.pyc$']
 
 " Snipmate
 let g:snipMate          = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
