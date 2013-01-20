@@ -18,12 +18,6 @@ alias gitup='git submodule update'
 alias got='git '
 alias get='git '
 
-# Quick jump to ruby directory
-alias rp='ruby -r pry '
-
-# Quick open of Rails Learning Checklist
-alias learn='mvim ~/Code/Ruby/things_to_work_on/README.md'
-
 # Use to find rails server accidentally left running
 alias rl='lsof -wni tcp:3000'
 
@@ -44,3 +38,36 @@ alias ve.add2virtualenv='add2virtualenv'
 alias ve.cdsitepackages='cdsitepackages'
 alias ve.cd='cdvirtualenv'
 alias ve.ls='lssitepackages' 
+
+# directory traversal
+alias ....='cd ../../../'
+
+# search for process
+alias ps.find='ps -ef | grep'
+
+# make and cd into directory
+function mcd () {
+  mkdir -p "$1" && cd "$1";
+}
+
+# extract most known archive types
+extract () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1     ;;
+      *.tar.gz)    tar xzf $1     ;;
+      *.bz2)       bunzip2 $1     ;;
+      *.rar)       unrar e $1     ;;
+      *.gz)        gunzip $1      ;;
+      *.tar)       tar xf $1      ;;
+      *.tbz2)      tar xjf $1     ;;
+      *.tgz)       tar xzf $1     ;;
+      *.zip)       unzip $1       ;;
+      *.Z)         uncompress $1  ;;
+      *.7z)        7z x $1        ;;
+      *)     echo "'$1' cannot be extracted via extract()" ;;
+      esac
+    else
+      echo "'$1' is not a valid file"
+    fi
+}
