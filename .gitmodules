@@ -97,3 +97,6 @@
 	path = vim/bundle/javascript-indent
 	url = git://github.com/vim-scripts/JavaScript-Indent.git
   ignore = dirty
+[submodule "vim/bundle/vim-mako"]
+	path = vim/bundle/vim-mako
+	url = git://github.com/vim-scripts/mako.vim.git
