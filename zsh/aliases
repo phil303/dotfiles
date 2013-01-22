@@ -71,3 +71,7 @@ extract () {
       echo "'$1' is not a valid file"
     fi
 }
+
+alias flush.redis='echo "FLUSHALL" | redis-cli'
+alias flush.mc='printf "flush_all\nquit\n\0" | nc localhost 11211'
+alias flush.all='printf "flush_all\nquit\n\0" | nc localhost 11211 && echo "FLUSHALL" | redis-cli'
