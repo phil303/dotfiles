@@ -151,7 +151,6 @@ let mapleader = ","
 " Better hand movements
 inoremap jj <Esc>
 inoremap uu _
-inoremap aa @
 
 " Better beginning/end of line movements
 nnoremap H ^
