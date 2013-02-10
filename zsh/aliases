@@ -31,13 +31,15 @@ alias pglist='ps -ef | grep postgres'
 alias ve.workon='workon'
 alias ve.deactivate='deactivate'
 alias ve.mk='mkvirtualenv'
-alias ve.mkwdir='mkvirtualenv $(basename $(pwd)) -a `pwd`'
 alias ve.rm='rmvirtualenv'
 alias ve.switch='workon'
 alias ve.add2virtualenv='add2virtualenv'
 alias ve.cdsitepackages='cdsitepackages'
 alias ve.cd='cdvirtualenv'
 alias ve.ls='lssitepackages' 
+
+# python pyc remove
+alias cleanpyc='find . -name "*.pyc" -print0 | xargs -0 -n1 rm'
 
 # directory traversal
 alias ....='cd ../../../'
