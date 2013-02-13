@@ -225,11 +225,6 @@ nnoremap <leader>l :set list!<CR>
 " Edit vimrc file
 nnoremap <silent> <leader>ev :execute "split" resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR> :echo "Sourced!"<CR>
-" Git
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gw :Gwrite<CR>
 " Convert Markdown to html (need "Markdown.pl in /usr/local/bin)
 nnoremap <leader>md :%! /usr/local/bin/Markdown.pl --html4tags<CR>
 
@@ -256,6 +251,13 @@ let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_stl_format         = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
 let g:syntastic_auto_loc_list      = 2
 nnoremap <silent> <leader>e :Errors<CR>
+
+" Fugitive
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gb :Gblame<CR>
 
 " Gundo
 nnoremap <silent> <leader>u :GundoToggle<CR>
