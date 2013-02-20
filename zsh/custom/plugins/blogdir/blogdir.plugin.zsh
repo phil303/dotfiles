@@ -1,4 +1,4 @@
-b() { cd ~/Blog/$1;  }
+b() { cd ~/Documents/Blog/$1;  }
 
-_b() { _files -W ~/Blog -/; }
+_b() { _files -W ~/Documents/Blog -/; }
 compdef _b b
