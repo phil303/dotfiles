@@ -65,14 +65,6 @@
   path = vim/bundle/gundo
   url = git://github.com/vim-scripts/Gundo.git
   ignore = dirty
-[submodule "vim/bundle/smartusline"]
-  path = vim/bundle/smartusline
-  url = git://github.com/molok/vim-smartusline.git
-  ignore = dirty
-[submodule "vim/bundle/vim-ruby-doc"]
-  path = vim/bundle/vim-ruby-doc
-  url = git://github.com/lucapette/vim-ruby-doc.git
-  ignore = dirty
 [submodule "vim/bundle/vim-markdown"]
   path = vim/bundle/vim-markdown
   url = git://github.com/tpope/vim-markdown.git
@@ -93,10 +85,9 @@
 	path = vim/bundle/vim-python
 	url = git://github.com/gg/python.vim.git
   ignore = dirty
-[submodule "vim/bundle/javascript-indent"]
-	path = vim/bundle/javascript-indent
-	url = git://github.com/vim-scripts/JavaScript-Indent.git
-  ignore = dirty
 [submodule "vim/bundle/vim-mako"]
 	path = vim/bundle/vim-mako
 	url = git://github.com/vim-scripts/mako.vim.git
+[submodule "vim/bundle/closetags"]
+	path = vim/bundle/closetags
+	url = git://github.com/vim-scripts/closetag.vim.git
