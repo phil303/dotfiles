@@ -91,3 +91,6 @@
 [submodule "vim/bundle/closetags"]
 	path = vim/bundle/closetags
 	url = git://github.com/vim-scripts/closetag.vim.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
