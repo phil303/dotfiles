@@ -47,6 +47,9 @@ alias ....='cd ../../../'
 # search for process
 alias ps.find='ps -ef | grep'
 
+# hipmunk warntap
+alias warntap='screen -D -R -S warntap ssh -t scripts01 bin/warntap.sh'
+
 # make and cd into directory
 function mcd () {
   mkdir -p "$1" && cd "$1";
