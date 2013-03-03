@@ -69,12 +69,23 @@ var cinemaTopLeft = slate.operation("corner", {
 
 var cinemaBottomLeft = cinemaTopLeft.dup({"direction": "bottom-left"});
 
+var createWarntap = slate.operation("shell", {
+  "command": "/usr/bin/osascript /Users/Philly/.dotfiles/scripts/create_warntap.scpt",
+  "wait": true,
+});
+
+var warntapSequence = slate.operation("sequence", {
+  "operations": [createWarntap, auxLeft]
+});
+
 var iTermHandling = function(windowObject) {
+  // create warntap window and move current ones
   var warntap = new RegExp("warntap");
   var title = windowObject.title();
   if (title.match(warntap)) {
     windowObject.doOperation(auxLeft);
   } else {
+    windowObject.doOperation(warntapSequence);
     windowObject.doOperation(auxTopRight);
   }
 };
@@ -119,4 +130,5 @@ var universalLayout = function() {
 
 S.bnda({
   "1:ctrl": universalLayout,
+  "2:ctrl": warntapSequence,
 });
