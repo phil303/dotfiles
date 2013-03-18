@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
+[submodule "vim/bundle/vim-arduino"]
+	path = vim/bundle/vim-arduino
+	url = git://github.com/tclem/vim-arduino.git

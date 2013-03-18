@@ -126,7 +126,6 @@ autocmd BufReadPost *
 if has('autocmd')
   autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType python set omnifunc=pythoncomplete#Complete
-  autocmd Filetype python setlocal ai et sta sw=4 sts=4
   autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
   autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
@@ -136,9 +135,18 @@ if has('autocmd')
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-  autocmd Filetype coffee setlocal ai et sta sw=4 sts=4
 endif
 " }}}2
+
+" Filetype Adjustments{{{2
+if has('autocmd')
+  autocmd Filetype python setlocal ai et sta sw=4 sts=4
+  autocmd Filetype coffee setlocal ai et sta sw=4 sts=4
+  autocmd BufRead,BufNewFile *.pde set filetype=arduino
+  autocmd BufRead,BufNewFile *.ino set filetype=arduino
+endif
+" }}}2
+
 
 " Abbreviations {{{1
 iabbrev hh =>
@@ -152,7 +160,7 @@ let mapleader = ","
 inoremap jj <Esc>
 inoremap uu _
 
-" move up/down by visual line
+" 
 nnoremap j gj
 nnoremap k gk
 
