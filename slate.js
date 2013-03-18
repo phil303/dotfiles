@@ -9,7 +9,7 @@ S.cfga({
 // Displays
 var lapDisplay = "1440x900"
 var cinemaDisplay = "2560x1440"
-var auxDisplay = ""
+var auxDisplay = "1920x1080"
 
 // Common Placements
 halfX = {"x": "screenSizeX/2"};
@@ -25,6 +25,13 @@ var lapLeft = slate.operation("move", {
 
 var lapRight = lapLeft.dup(halfX);
 
+var lapBottomLeft = slate.operation("corner", {
+  "screen": lapDisplay,
+  "direction": "bottom-left",
+  "width": "screenSizeX/2",
+  "height": "screenSizeY/2"
+});
+
 var macbookMonitorLayout = slate.layout("macbookMonitor", {
   "MacVim" : {
     "operations": [lapRight],
@@ -33,6 +40,11 @@ var macbookMonitorLayout = slate.layout("macbookMonitor", {
   },
   "Google Chrome": {
     "operations": [lapLeft],
+    "ignore-fail": true,
+    "repeat-last": true
+  },
+  "iTerm": {
+    "operations": [lapBottomLeft],
     "ignore-fail": true,
     "repeat-last": true
   }
@@ -86,7 +98,22 @@ var iTermHandling = function(windowObject) {
     windowObject.doOperation(auxLeft);
   } else {
     windowObject.doOperation(warntapSequence);
-    windowObject.doOperation(auxTopRight);
+    windowObject.doOperation(cinemaBottomLeft);
+  }
+};
+
+var iTermToggle = slate.operation("toggle", {
+  "app": ["iTerm"]
+});
+
+// generalize this
+// TODO: Doesn't work
+var moreiTermHandling = function(windowObject) {
+  // only hide non warntap windows
+  var warntap = new RegExp("warntap");
+  var title = windowObject.title();
+  if (!(title.match(warntap))) {
+    //windowObject.doOperation(iTermToggle);
   }
 };
 
@@ -131,4 +158,5 @@ var universalLayout = function() {
 S.bnda({
   "1:ctrl": universalLayout,
   "2:ctrl": warntapSequence,
+  "':cmd": moreiTermHandling
 });

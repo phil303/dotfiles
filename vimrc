@@ -152,6 +152,10 @@ let mapleader = ","
 inoremap jj <Esc>
 inoremap uu _
 
+" move up/down by visual line
+nnoremap j gj
+nnoremap k gk
+
 " Better beginning/end of line movements
 nnoremap H ^
 nnoremap L $
