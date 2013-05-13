@@ -1,5 +1,4 @@
-# tmux
-alias tmux='TERM=screen-256color-bce tmux'
+alias l='ls -al'
 
 # adds git aliases
 alias gs='git status '
@@ -14,9 +13,6 @@ alias gx='gitx --all'
 alias gh='git hist '
 alias gist='git hist '
 alias gitup='git submodule update'
-
-alias got='git '
-alias get='git '
 
 # Use to find rails server accidentally left running
 alias rl='lsof -wni tcp:3000'
