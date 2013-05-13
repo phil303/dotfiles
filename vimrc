@@ -212,20 +212,6 @@ nnoremap p p'[v']=
 nnoremap P P'[v']=
 vnoremap <D-l> >gv
 
-" Autocompletion (based off lucapette vimrc)
-"" Omni completion with ctrl-space
-inoremap <expr> <C-o> pumvisible() \|\| &omnifunc == '' ?
-            \ "\<lt>C-n>" :
-            \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-
-"" User defined completion with ctrl-u.
-inoremap <expr> <C-u> pumvisible() \|\| &completefunc == '' ?
-            \ "\<lt>C-n>" :
-            \ "\<lt>C-x>\<lt>C-u><c-r>=pumvisible() ?" .
-            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 "" make ctrl-j/ctrl-k do the same thing in all popup menus
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
@@ -237,8 +223,6 @@ nnoremap <leader>l :set list!<CR>
 " Edit vimrc file
 nnoremap <silent> <leader>ev :execute "split" resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR> :echo "Sourced!"<CR>
-" Convert Markdown to html (need "Markdown.pl in /usr/local/bin)
-nnoremap <leader>md :%! /usr/local/bin/Markdown.pl --html4tags<CR>
 
 " Plugins {{{1
 " NERDTree
@@ -249,7 +233,7 @@ let g:NERDTreeIgnore = ['\.pyc$']
 
 " Snipmate
 let g:snipMate          = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
-let g:snips_trigger_key = '<Tab>'
+let g:snipMateNextOrTrigger = '<Tab>'
 
 " CtrlP
 nnoremap <silent> <leader>p :CtrlP<CR>
@@ -274,7 +258,3 @@ nnoremap <leader>gb :Gblame<CR>
 " Gundo
 nnoremap <silent> <leader>u :GundoToggle<CR>
 let g:gundo_right = 1
-
-" Vim-Ruby-docs
-let g:ruby_doc_command ='open'
-
