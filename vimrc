@@ -190,8 +190,8 @@ noremap <C-l> <C-w>l
 nnoremap <Enter> m`o<Esc>k``
 
 " Keep search matches in middle of window
-nnoremap <silent> n nzzzv:call PulseCursorLine()<cr>
-nnoremap <silent> N Nzzzv:call PulseCursorLine()<cr>
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
 " Move a line of text using Alt+[jk], indent with Alt+[hl]
 nnoremap <D-j> :m+<CR>==
 nnoremap <D-k> :m-2<CR>==

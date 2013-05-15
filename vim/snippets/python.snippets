@@ -129,7 +129,7 @@ snippet db
 # ipython debugger (ipdb)
 snippet ipdb
 	import ipdb; ipdb.set_trace()
-# ipython debugger (pdbbb)
+# ipython debugger (pdb)
 snippet pdb
 	import pdb; pdb.set_trace()
 snippet "
@@ -148,3 +148,10 @@ snippet testcase
 			${3:pass}
 snippet fut
 	from __future__ import ${1}
+# logging
+snippet logi
+	logging.info("${1}"${2})
+snippet logw
+	logging.warn("${1}"${2})
+snippet loge
+	logging.error("${1}"${2})
