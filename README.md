@@ -1,16 +1,23 @@
 # Phil Aquilina Dot Files
 
-To use for installation on a new machine.  Based on Ryan Bates and Tim Pope dotfiles.
-
 ## Installation
 
     git clone git://github.com/phil303/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
+    # install dotfiles to home directory
     rake install
-    git submodule init
-    gitup
+    mkdir vim/bundle
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     chsh -s /bin/zsh
 
-## Updating All Submodules
+## Install Vim Plugins
   
+    # in Vim
+    :BundleInstall
+
+    # CLI
+    vim +BundleInstall +qall
+
+## Install (or Update) Submodules
+
     gitup

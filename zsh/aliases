@@ -12,7 +12,7 @@ alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gh='git hist '
 alias gist='git hist '
-alias gitup='git submodule update'
+alias gitup='git submodule foreach git pull origin master'
 
 # Use to find rails server accidentally left running
 alias rl='lsof -wni tcp:3000'
