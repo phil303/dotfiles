@@ -1,10 +1,37 @@
 " Options {{{1
 " ----------------------
-" Pathogen Settings {{{2
+" Vundle Settings {{{2
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'garbas/vim-snipmate'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-markdown'
+Bundle 'vim-scripts/matchit'
+Bundle 'vim-scripts/Gundo'
+Bundle 'vim-scripts/mako.vim'
+Bundle 'vim-scripts/closetag.vim'
+Bundle 'kien/ctrlp'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'gg/python.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'airblade/vim-gitgutter'
+
+filetype plugin indent on     " required
+
 
 " }}}2
 " General Settings
