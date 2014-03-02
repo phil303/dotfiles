@@ -37,75 +37,60 @@ filetype plugin indent on     " required
 " General Settings
 set nocompatible
 
-set encoding=utf-8    "Default encoding set to utf-8
-set nomodeline        "Modelines for diff ft handling but are a security risk.
-set scrolloff=3       "Scroll offset equal to 3 lines
-set showmode          "Vim default on. Vi off. Displays mode in command line.
-set fillchars=diff:\  "'\' replaces '-' in Vim diff
-set undofile          "Vim automatically saves undo history to an undo file
-set undoreload=10000  "Save the whole buffer for undo when reloading it.
-set nolist            "Show invisible symbols as characters.
+set encoding=utf-8    " Default encoding set to utf-8
+set nomodeline        " Modelines for diff ft handling but are a security risk.
+set scrolloff=3       " Scroll offset equal to 3 lines
+set showmode          " Vim default on. Vi off. Displays mode in command line.
+set undofile          " Vim automatically saves undo history to an undo file
+set undoreload=10000  " Save the whole buffer for undo when reloading it.
+set nolist            " Show invisible symbols as characters.
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-set showbreak=↪       "When breakline is present, show argument as character
-set wildmenu          "Turns command-line completion on
-set wildignore=*~,.git,tmp,_site,*.log,*.pyc	"Matching files ignored
+set showbreak=↪       " kWhen breakline is present, show argument as character
+set wildmenu          " kTurns command-line completion on
+set wildignore=*~,*.log,*.pyc	"Matching files ignored
 set wildmode=list:longest,full          "act more like bash
-set wrap              "Wraps text
-set linebreak         "Wrap breaks at word boundaries
+set wrap              " Wraps text
+set linebreak         " Wrap breaks at word boundaries
 set virtualedit+=block  "Don't get.  Most people recommend though
-"set autochdir         "Change working directory to that of the file opened
-set autoindent        "Indented lines have the same indent level
-set autoread          "Externally updated files are automatically read
-set autowrite         "Autosave modified buffers when switching to another
+set autoindent        " Indented lines have the same indent level
+set autoread          " Externally updated files are automatically read
+set autowrite         " Autosave modified buffers when switching to another
 set backspace=indent,eol,start    "Backspace over indents, line breaks, etc.
 set completeopt=longest,menuone   "Completion options
-set gdefault          "Global substitution is set on
-set guioptions-=A     "Disallows putting selected text into copy register
-set guioptions-=T     "Disallows gui toolbar
-set guioptions-=m     "Disallows gui menubar
-set guioptions-=r     "Disallows right handed scrollbar
+set gdefault          " Global substitution is set on
+set guioptions-=A     " Disallows putting selected text into copy register
+set guioptions-=T     " Disallows gui toolbar
+set guioptions-=m     " Disallows gui menubar
+set guioptions-=r     " Disallows right handed scrollbar
 set guioptions-=R
-set guioptions-=l     "Disallows left handed scrollbar
+set guioptions-=l     " Disallows left handed scrollbar
 set guioptions-=L     
-set history=1000      "History of ':' commands.  Vim default is 20.
-set hlsearch          "Highlight search matches
-set ignorecase        "Ignores case of search terms
-set smartcase         "Override 'ignorecase' if search contains uppercases.
-set incsearch         "matches as you type
-set laststatus=2      "2 means all windows will have a status line
-set magic             "Default on. Allows for special char. in search patterns
-set matchtime=3       "Argument is the tenths of a second until matching parens
-set ruler             "Show the cursor position (row,column)
-set shiftwidth=2      "Number of spaces used for autoindent
-set shiftround        "Round indent to multiple of 'shiftwidth'
-set expandtab         "Tabs are expanded as spaces
-set tabstop=2         "Number of spaces tab accounts for
-set softtabstop=2     "Tabs count for 2 spaces when editing
-set smarttab          "sw at the start of the line, sts everywhere else
-set showmatch         "When a bracket is inserted, briefly jump to matching one
-set splitright        "New buffers open on the right side of current buffer
-set splitbelow        "New buffers open below current buffer
-set textwidth=78      "Max width of text inserted.  '0' disables
-set noerrorbells      "Default off. Turn off audible bell
-set visualbell        "Default off.  Turn on visual bell
-set number            "Row numbers
-set clipboard=unnamed "all operations work with OS clipboard
-
-" Fold for only Vimscript
-augroup filetype_vim
-  autocmd!
-  autocmd Filetype vim setlocal foldmethod=marker
-augroup end
+set history=1000      " History of ':' commands.  Vim default is 20.
+set hlsearch          " Highlight search matches
+set ignorecase        " Ignores case of search terms
+set smartcase         " Override 'ignorecase' if search contains uppercases.
+set incsearch         " matches as you type
+set laststatus=2      " 2 means all windows will have a status line
+set magic             " Default on. Allows for special char. in search patterns
+set matchtime=3       " Argument is the tenths of a second until matching parens
+set ruler             " Show the cursor position (row,column)
+set shiftwidth=2      " Number of spaces used for autoindent
+set shiftround        " Round indent to multiple of 'shiftwidth'
+set expandtab         " Tabs are expanded as spaces
+set tabstop=2         " Number of spaces tab accounts for
+set softtabstop=2     " Tabs count for 2 spaces when editing
+set smarttab          " sw at the start of the line, sts everywhere else
+set showmatch         " When a bracket is inserted, briefly jump to matching one
+set splitright        " New buffers open on the right side of current buffer
+set splitbelow        " New buffers open below current buffer
+set textwidth=78      " Max width of text inserted.  '0' disables
+set noerrorbells      " Default off. Turn off audible bell
+set visualbell        " Default off.  Turn on visual bell
+set number            " Row numbers
+set lazyredraw        " Don't redraw when don't have to
+set clipboard=unnamed " all operations work with OS clipboard
 
 " Use a bar-shaped cursor for insert mode, even through tmux. (Steve Losh)
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
 if has('mouse')
   set mouse=a
   if &term =~ "xterm" || &term =~ "screen"
@@ -114,17 +99,6 @@ if has('mouse')
     autocmd BufEnter * set ttymouse=xterm2
   endif
 endif
-
-" Status line {{{2
-" Turned off for Powerline
-"set statusline=%F%m%r%h%w
-"set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
-"set statusline+=\ %#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"set statusline+=%=(%{&ff}/%Y)
-"set statusline+=\ (line\ %l\/%L,\ col\ %c)
-" }}}2
 
 " Set colorscheme {{{2
 syntax enable
@@ -185,7 +159,6 @@ let mapleader = ","
 
 " Better hand movements
 inoremap jj <Esc>
-inoremap uu _
 
 " 
 nnoremap j gj
@@ -204,9 +177,6 @@ nnoremap J mzJ`z
 " Yank selection ot system keyboard
 vnoremap Y "*y
 
-" Esc to remove search highlighting
-nnoremap <silent> <esc> :noh<return><esc>
-
 " Use ctrl+hjkl to move between window splits
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -219,18 +189,6 @@ nnoremap <Enter> m`o<Esc>k``
 " Keep search matches in middle of window
 nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
-" Move a line of text using Alt+[jk], indent with Alt+[hl]
-nnoremap <D-j> :m+<CR>==
-nnoremap <D-k> :m-2<CR>==
-nnoremap <D-h> <<
-nnoremap <D-l> >>
-inoremap <D-j> <Esc>:m+<CR>==gi
-inoremap <D-k> <Esc>:m-2<CR>==gi
-inoremap <D-h> <Esc><<`]a
-inoremap <D-l> <Esc>>>`]a
-vnoremap <D-j> :m'>+<CR>gv=gv
-vnoremap <D-k> :m-2<CR>gv=gv
-vnoremap <D-h> <gv
 
 " Respect destination indentation level when pasting
 nnoremap <leader>p p
@@ -247,6 +205,7 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 "Shortcuts
 " Toggle 'set list'
 nnoremap <leader>l :set list!<CR>
+nnoremap <leader>rl :g/^\W*$/d<CR>
 " Edit vimrc file
 nnoremap <silent> <leader>ev :execute "split" resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR> :echo "Sourced!"<CR>
