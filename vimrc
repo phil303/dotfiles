@@ -1,6 +1,4 @@
-" Options {{{1
-" ----------------------
-" Vundle Settings {{{2
+" Vundle Settings {{{1
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -33,7 +31,8 @@ Bundle 'airblade/vim-gitgutter'
 filetype plugin indent on     " required
 
 
-" }}}2
+" Options {{{1
+" ----------------------
 " General Settings
 set nocompatible
 
@@ -45,8 +44,8 @@ set undofile          " Vim automatically saves undo history to an undo file
 set undoreload=10000  " Save the whole buffer for undo when reloading it.
 set nolist            " Show invisible symbols as characters.
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-set showbreak=↪       " kWhen breakline is present, show argument as character
-set wildmenu          " kTurns command-line completion on
+set showbreak=↪       " When breakline is present, show argument as character
+set wildmenu          " Turns command-line completion on
 set wildignore=*~,*.log,*.pyc	"Matching files ignored
 set wildmode=list:longest,full          "act more like bash
 set wrap              " Wraps text
@@ -90,6 +89,12 @@ set number            " Row numbers
 set lazyredraw        " Don't redraw when don't have to
 set clipboard=unnamed " all operations work with OS clipboard
 
+" Fold for only Vimscript
+augroup filetype_vim
+  autocmd!
+  autocmd Filetype vim setlocal foldmethod=marker
+augroup end
+
 " Use a bar-shaped cursor for insert mode, even through tmux. (Steve Losh)
 if has('mouse')
   set mouse=a
@@ -108,10 +113,16 @@ call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
 "}}}2
 
 " Backups {{{2
-set undodir=~/.vim/tmp/undo//     " undo files
-set backupdir=~/.vim/tmp/backup// " backups
-set directory=~/.vim/tmp/swap//   " swap files
-set backup
+if isdirectory(expand("~/.vim_tmp"))
+      set backup
+      autocmd BufWritePre,BufWritePost * if exists("s:backupdir") | set backupext=~ | let &backupdir = s:backupdir | unlet s:backupdir | endif
+      autocmd BufWritePre ~/*
+            \ let s:path = expand("~/.vim_tmp").strpart(expand("<afile>:p:~:h"),1) |
+            \ if !isdirectory(s:path) | call mkdir(s:path,"p") | endif |
+            \ let s:backupdir = &backupdir |
+            \ let &backupdir = escape(s:path,'\,').','.&backupdir |
+            \ let &backupext = strftime(".%Y%m%d%H%M%S~",getftime(expand("<afile>:p")))
+endif
 " }}}2
 
 " Resize splits when vim is resized {{{2
@@ -139,16 +150,21 @@ if has('autocmd')
 endif
 " }}}2
 
-" Filetype Adjustments{{{2
+" Filetype Adjustments{{{1
+" get rid of annoying whitespace on save
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
 if has('autocmd')
   autocmd Filetype python setlocal ai et sta sw=4 sts=4
   autocmd Filetype coffee setlocal ai et sta sw=4 sts=4
-  autocmd BufRead,BufNewFile *.pde set filetype=arduino
-  autocmd BufRead,BufNewFile *.ino set filetype=arduino
+  autocmd FileType c,cpp,java,php,python,coffee autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 endif
-" }}}2
-
-
+" }}}1
 " Abbreviations {{{1
 iabbrev hh =>
 iabbrev @@ philaquilina@gmail.com
