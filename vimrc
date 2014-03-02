@@ -2,6 +2,7 @@
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+nnoremap <leader>! :BundleInstall<CR>
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdcommenter'
