@@ -2,7 +2,7 @@
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-nnoremap <leader>! :BundleInstall<CR>
+nnoremap <leader>` :BundleInstall!<CR>
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdcommenter'
@@ -28,6 +28,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'gg/python.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'tacahiroy/ctrlp-funky'
 
 filetype plugin indent on     " required
 
@@ -89,6 +90,8 @@ set visualbell        " Default off.  Turn on visual bell
 set number            " Row numbers
 set lazyredraw        " Don't redraw when don't have to
 set clipboard=unnamed " all operations work with OS clipboard
+set colorcolumn=+1    " color background slightly different at text width + 1
+" execute "set colorcolumn=" . join(range(81,335), ',')
 
 " Fold for only Vimscript
 augroup filetype_vim
@@ -114,15 +117,26 @@ call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
 "}}}2
 
 " Backups {{{2
-if isdirectory(expand("~/.vim_tmp"))
-      set backup
-      autocmd BufWritePre,BufWritePost * if exists("s:backupdir") | set backupext=~ | let &backupdir = s:backupdir | unlet s:backupdir | endif
-      autocmd BufWritePre ~/*
-            \ let s:path = expand("~/.vim_tmp").strpart(expand("<afile>:p:~:h"),1) |
-            \ if !isdirectory(s:path) | call mkdir(s:path,"p") | endif |
-            \ let s:backupdir = &backupdir |
-            \ let &backupdir = escape(s:path,'\,').','.&backupdir |
-            \ let &backupext = strftime(".%Y%m%d%H%M%S~",getftime(expand("<afile>:p")))
+" 
+" http://stackoverflow.com/questions/4331776/change-vim-swap-backup-undo-file-name
+" Save your temp vim files to a less annoying place than the current directory.
+if isdirectory(expand('~/.vim_tmp/backup')) == 0
+  :silent !mkdir -p ~/.vim_tmp/backup >/dev/null 2>&1
+endif
+set backupdir=~/.vim_tmp/backup/
+set backup
+
+if isdirectory(expand('/.vim_tmp/swap')) == 0
+  :silent !mkdir -p ~/.vim_tmp/swap >/dev/null 2>&1
+endif
+set directory=~/.vim_tmp/swap//
+
+if exists("+undofile")
+  if isdirectory(expand('/.vim_tmp/undo')) == 0
+    :silent !mkdir -p ~/.vim_tmp/undo > /dev/null 2>&1
+  endif
+  set undodir=~/.vim_tmp/undo//
+  set undofile
 endif
 " }}}2
 
@@ -177,9 +191,12 @@ let mapleader = ","
 " Better hand movements
 inoremap jj <Esc>
 
-" 
+" move over wrapped lines
 nnoremap j gj
 nnoremap k gk
+
+" esc to clear search highlighting
+nnoremap Z :let @/ = ""<cr><esc>
 
 " Better beginning/end of line movements
 nnoremap H ^
@@ -234,15 +251,23 @@ let g:NERDTreeWinSize   = 22
 let g:NERDTreeChDirMode = 2       "Change CWD to NERDTree root
 let g:NERDTreeIgnore = ['\.pyc$']
 
+" NerdCommenter
+let g:NERDSpaceDelims = 1
+
 " Snipmate
 let g:snipMate          = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
 let g:snipMateNextOrTrigger = '<Tab>'
 
-" CtrlP
+" CtrlP / CtrlP extension funky
 nnoremap <silent> <leader>p :CtrlP<CR>
+nnoremap <silent> <leader>P :CtrlP<CR>
+nnoremap <silent> <leader>o :CtrlPFunky<CR>
+nnoremap <silent> <leader>O :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 let g:ctrlp_prompt_mappings   = { 'PrtClearCache()': ['<F5>','<c-r>'] }
 let g:ctrlp_reuse_window      = 'NERD_tree_2'
-let g:ctrlp_working_path_mode = 2  "Find nearest parent folder with source control
+let g:ctrlp_working_path_mode = 2   " Find nearest parent folder with source control
+let g:ctrlp_extensions = ['funky']
+let g:ctrlp_funky_syntax_highlight = 1
 
 " Syntastic
 let g:syntastic_enable_signs       = 1

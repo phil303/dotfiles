@@ -32,7 +32,7 @@ alias ve.switch='workon'
 alias ve.add2virtualenv='add2virtualenv'
 alias ve.cdsitepackages='cdsitepackages'
 alias ve.cd='cdvirtualenv'
-alias ve.ls='lssitepackages' 
+alias ve.ls='lssitepackages'
 
 # python pyc remove
 alias cleanpyc='find . -name "*.pyc" -print0 | xargs -0 -n1 rm'
@@ -76,3 +76,6 @@ extract () {
 alias flush.redis='echo "FLUSHALL" | redis-cli'
 alias flush.mc='printf "flush_all\nquit\n\0" | nc localhost 11211'
 alias flush.all='printf "flush_all\nquit\n\0" | nc localhost 11211 && echo "FLUSHALL" | redis-cli'
+alias gyp="~/Code/Work/hipmanage/hipmanage/git.py"
+alias gyp.clone="~/Code/Work/hipmanage/hipmanage/git.py clone"
+alias gyp.push="~/Code/Work/hipmanage/hipmanage/git.py push"
