@@ -7,15 +7,12 @@ alias ga='git add '
 alias gb='git branch '
 alias gc='git commit '
 alias gd='git diff '
-alias go='git checkout '
+alias co='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gh='git hist '
 alias gist='git hist '
 alias gitup='git submodule foreach git pull origin master'
-
-# Use to find rails server accidentally left running
-alias rl='lsof -wni tcp:3000'
 
 # postgres
 alias pgstatus='pg_ctl status -D /db/postgres'
@@ -23,6 +20,8 @@ alias pgstart='pg_ctl -D /db/postgres -l /db/postgres/server.log start'
 alias pgstop='pg_ctl -D /db/postgres -l /db/postgres/server.log stop'
 alias pglist='ps -ef | grep postgres'
 
+# make ipython run inside virtualenv when possible
+alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 # python virtualenvwrapper aliases
 alias ve.workon='workon'
 alias ve.deactivate='deactivate'
@@ -43,35 +42,15 @@ alias ....='cd ../../../'
 # search for process
 alias ps.find='ps -ef | grep'
 
-# hipmunk warntap
-alias warntap='screen -D -R -S warntap ssh -t scripts01 bin/warntap.sh'
-
 # make and cd into directory
 function mcd () {
   mkdir -p "$1" && cd "$1";
 }
 
-# extract most known archive types
-extract () {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1     ;;
-      *.tar.gz)    tar xzf $1     ;;
-      *.bz2)       bunzip2 $1     ;;
-      *.rar)       unrar e $1     ;;
-      *.gz)        gunzip $1      ;;
-      *.tar)       tar xf $1      ;;
-      *.tbz2)      tar xjf $1     ;;
-      *.tgz)       tar xzf $1     ;;
-      *.zip)       unzip $1       ;;
-      *.Z)         uncompress $1  ;;
-      *.7z)        7z x $1        ;;
-      *)     echo "'$1' cannot be extracted via extract()" ;;
-      esac
-    else
-      echo "'$1' is not a valid file"
-    fi
-}
+alias warntap='screen -D -R -S warntap ssh -t shells01.ec2.hipmunk.com bin/warntap.sh'
+alias warntappy='screen -D -R -S warntappy ssh -t shells01.ec2.hipmunk.com bin/warntappy.sh'
+alias warntapjs='screen -D -R -S warntapjs ssh -t shells01.ec2.hipmunk.com bin/warntapjs.sh'
+alias haproxystatus='screen -D -R -S deploy_status ~/Code/Work/hipmanage/hipmanage/haproxystatus.py'
 
 alias flush.redis='echo "FLUSHALL" | redis-cli'
 alias flush.mc='printf "flush_all\nquit\n\0" | nc localhost 11211'
@@ -79,3 +58,6 @@ alias flush.all='printf "flush_all\nquit\n\0" | nc localhost 11211 && echo "FLUS
 alias gyp="~/Code/Work/hipmanage/hipmanage/git.py"
 alias gyp.clone="~/Code/Work/hipmanage/hipmanage/git.py clone"
 alias gyp.push="~/Code/Work/hipmanage/hipmanage/git.py push"
+alias gyp.commit="~/Code/Work/hipmanage/hipmanage/git.py commit"
+# update hipmange
+alias gyp.update="git -C ~/Code/Work/hipmanage pull --rebase upstream master"

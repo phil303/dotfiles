@@ -34,12 +34,17 @@ ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}%B✘%b%F{154}|%f%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%F{154}|"
 
 # In order for Postgresql (and other things) to work, /usr/local/bin must come before /usr/bin
-export PATH=/usr/local/bin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/local/lib/ruby/gems/1.9.1/gems/sass-3.2.1/bin:$PATH
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH=/usr/local/bin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/local/lib/ruby/gems/1.9.1/gems/sass-3.2.1/bin:/usr/local/bin/arcanist/bin:$PATH
+
+export GOPATH=$HOME/Code/Go
+export PATH=$PATH:$GOPATH/bin
+
+export EDITOR=vim
 
 # keep virtualenvs all in one place
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
-ulimit -n 10000
 source virtualenvwrapper.sh 
+
+ulimit -n 10000

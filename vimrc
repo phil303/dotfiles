@@ -29,6 +29,8 @@ Bundle 'gg/python.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tacahiroy/ctrlp-funky'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'mileszs/ack.vim'
 
 filetype plugin indent on     " required
 
@@ -45,7 +47,7 @@ set showmode          " Vim default on. Vi off. Displays mode in command line.
 set undofile          " Vim automatically saves undo history to an undo file
 set undoreload=10000  " Save the whole buffer for undo when reloading it.
 set nolist            " Show invisible symbols as characters.
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·  
 set showbreak=↪       " When breakline is present, show argument as character
 set wildmenu          " Turns command-line completion on
 set wildignore=*~,*.log,*.pyc	"Matching files ignored
@@ -91,7 +93,6 @@ set number            " Row numbers
 set lazyredraw        " Don't redraw when don't have to
 set clipboard=unnamed " all operations work with OS clipboard
 set colorcolumn=+1    " color background slightly different at text width + 1
-" execute "set colorcolumn=" . join(range(81,335), ',')
 
 " Fold for only Vimscript
 augroup filetype_vim
@@ -110,10 +111,20 @@ if has('mouse')
 endif
 
 " Set colorscheme {{{2
+" Hack, revert a change in gitgutter's behavior. 
+" This has to be set before solarized for some reason
+autocmd ColorScheme * 
+      \ highlight clear SignColumn
+      \ highlight GitGutterAdd ctermfg=green
+      \ highlight GitGutterChange ctermfg=yellow
+      \ highlight GitGutterDelete ctermfg=red
+      \ highlight GitGutterChangeDelete ctermfg=yellow
+
 syntax enable
 set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")   " Toggle colorscheme b/w light and dark with F5
+
 "}}}2
 
 " Backups {{{2
@@ -177,11 +188,10 @@ endfun
 if has('autocmd')
   autocmd Filetype python setlocal ai et sta sw=4 sts=4
   autocmd Filetype coffee setlocal ai et sta sw=4 sts=4
-  autocmd FileType c,cpp,java,php,python,coffee autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+  autocmd FileType c,cpp,java,php,python,coffee,scss,css autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 endif
 " }}}1
 " Abbreviations {{{1
-iabbrev hh =>
 iabbrev @@ philaquilina@gmail.com
 iabbrev ww philaquilina.com
 
@@ -190,6 +200,9 @@ let mapleader = ","
 
 " Better hand movements
 inoremap jj <Esc>
+
+" No more shifting to get the colon
+nnoremap ; :
 
 " move over wrapped lines
 nnoremap j gj
@@ -259,14 +272,14 @@ let g:snipMate          = {'no_match_completion_feedkeys_chars': "\<tab>" }    "
 let g:snipMateNextOrTrigger = '<Tab>'
 
 " CtrlP / CtrlP extension funky
-nnoremap <silent> <leader>p :CtrlP<CR>
+nnoremap <silent> <leader>p :CtrlPMixed<CR>
 nnoremap <silent> <leader>P :CtrlP<CR>
 nnoremap <silent> <leader>o :CtrlPFunky<CR>
 nnoremap <silent> <leader>O :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 let g:ctrlp_prompt_mappings   = { 'PrtClearCache()': ['<F5>','<c-r>'] }
 let g:ctrlp_reuse_window      = 'NERD_tree_2'
 let g:ctrlp_working_path_mode = 2   " Find nearest parent folder with source control
-let g:ctrlp_extensions = ['funky']
+let g:ctrlp_extensions = ['mixed', 'funky']
 let g:ctrlp_funky_syntax_highlight = 1
 
 " Syntastic
