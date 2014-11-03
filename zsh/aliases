@@ -18,6 +18,8 @@ alias gitup='git submodule foreach git pull origin master'
 alias pgstatus='pg_ctl status -D /db/postgres'
 alias pgstart='pg_ctl -D /db/postgres -l /db/postgres/server.log start'
 alias pgstop='pg_ctl -D /db/postgres -l /db/postgres/server.log stop'
+alias blendpgstart='pg_ctl -o "-p 5433" -D /db/blend -l /db/postgres/server.log start'
+alias blendpgstop='pg_ctl -o "-p 5433" -D /db/blend -l /db/postgres/server.log stop'
 alias pglist='ps -ef | grep postgres'
 
 # make ipython run inside virtualenv when possible
@@ -47,9 +49,9 @@ function mcd () {
   mkdir -p "$1" && cd "$1";
 }
 
-alias warntap='screen -D -R -S warntap ssh -t shells01.ec2.hipmunk.com bin/warntap.sh'
-alias warntappy='screen -D -R -S warntappy ssh -t shells01.ec2.hipmunk.com bin/warntappy.sh'
-alias warntapjs='screen -D -R -S warntapjs ssh -t shells01.ec2.hipmunk.com bin/warntapjs.sh'
+alias warntap='screen -D -R -S warntap ssh -t shells01.ec2.hipmunk.com warntap.sh'
+alias warntappy='screen -D -R -S warntappy ssh -t shells01.ec2.hipmunk.com warntappy.sh'
+alias warntapjs='screen -D -R -S warntapjs ssh -t shells01.ec2.hipmunk.com warntapjs.sh'
 alias haproxystatus='screen -D -R -S deploy_status ~/Code/Work/hipmanage/hipmanage/haproxystatus.py'
 
 alias flush.redis='echo "FLUSHALL" | redis-cli'
