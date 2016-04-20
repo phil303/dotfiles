@@ -6,9 +6,7 @@
   ci = commit
   st = status
   br = branch
-  hist = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd, %cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  type = cat-file -t
-  dump = cat-file -p
+  hist = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd, %cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
 [color]
 	diff = auto
 	status = auto
@@ -21,6 +19,13 @@
 	whitespace = nowarn
 [format]
 	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
-[github]
-	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
-	password = <%= print("GitHub Password: "); STDOUT.flush; STDIN.gets.chomp %>
+[credential]
+	helper = osxkeychain
+[diff]
+	tool = opendiff
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
