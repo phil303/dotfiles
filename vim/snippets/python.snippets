@@ -118,6 +118,10 @@ snippet pn
 # Print for debugging
 snippet pd
 	print "${1:var}:", $1
+snippet ps
+	print "\n\n"
+	print "${1:var}:", $1
+	print "\n\n"
 snippet pf
 	print "foo"
 snippet pb
@@ -131,7 +135,7 @@ snippet ipdb
 	import ipdb; ipdb.set_trace()
 # ipython debugger (pdb)
 snippet pdb
-	import pdb; pdb.set_trace()
+	import pudb; pudb.set_trace()
 snippet "
 	"""
 	${1:doc}

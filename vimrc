@@ -1,36 +1,40 @@
 " Vundle Settings {{{1
 filetype off
+" I don't know why this works for go syntax highlighting but it does
+set runtimepath+=$GOROOT/misc/vim   
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-nnoremap <leader>` :BundleInstall!<CR>
+nnoremap <leader>` :PluginInstall!<CR>
 
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'garbas/vim-snipmate'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/Gundo'
-Bundle 'vim-scripts/mako.vim'
-Bundle 'vim-scripts/closetag.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'gg/python.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tacahiroy/ctrlp-funky'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'mileszs/ack.vim'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'fatih/vim-go'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/html5.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'gg/python.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'SirVer/ultisnips'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/Gundo'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'danro/rename.vim'
 
 filetype plugin indent on     " required
 
@@ -60,7 +64,6 @@ set autoread          " Externally updated files are automatically read
 set autowrite         " Autosave modified buffers when switching to another
 set backspace=indent,eol,start    "Backspace over indents, line breaks, etc.
 set completeopt=longest,menuone   "Completion options
-set gdefault          " Global substitution is set on
 set guioptions-=A     " Disallows putting selected text into copy register
 set guioptions-=T     " Disallows gui toolbar
 set guioptions-=m     " Disallows gui menubar
@@ -93,6 +96,9 @@ set number            " Row numbers
 set lazyredraw        " Don't redraw when don't have to
 set clipboard=unnamed " all operations work with OS clipboard
 set colorcolumn=+1    " color background slightly different at text width + 1
+set cursorline        " highlight current line
+set lazyredraw
+set autochdir
 
 " Fold for only Vimscript
 augroup filetype_vim
@@ -160,22 +166,6 @@ autocmd BufReadPost *
     \ endif
 " }}}2
 
-" Autocompletion{{{2
-if has('autocmd')
-  autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType python set omnifunc=pythoncomplete#Complete
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-  autocmd FileType c set omnifunc=ccomplete#Complete
-  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete " may require ruby compiled in
-  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-endif
-" }}}2
-
 " Filetype Adjustments{{{1
 " get rid of annoying whitespace on save
 fun! <SID>StripTrailingWhitespaces()
@@ -188,13 +178,9 @@ endfun
 if has('autocmd')
   autocmd Filetype python setlocal ai et sta sw=4 sts=4
   autocmd Filetype coffee setlocal ai et sta sw=4 sts=4
-  autocmd FileType c,cpp,java,php,python,coffee,scss,css autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+  autocmd FileType javascript,c,cpp,java,php,python,coffee,scss,css autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 endif
 " }}}1
-" Abbreviations {{{1
-iabbrev @@ philaquilina@gmail.com
-iabbrev ww philaquilina.com
-
 " Mappings {{{1
 let mapleader = ","
 
@@ -261,15 +247,12 @@ nnoremap <leader>sv :source $MYVIMRC<CR> :echo "Sourced!"<CR>
 " NERDTree
 nnoremap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize   = 22
-let g:NERDTreeChDirMode = 2       "Change CWD to NERDTree root
+let g:NERDTreeChDirMode = 2
 let g:NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeShowHidden = 1
 
 " NerdCommenter
 let g:NERDSpaceDelims = 1
-
-" Snipmate
-let g:snipMate          = {'no_match_completion_feedkeys_chars': "\<tab>" }    "Fixes tab
-let g:snipMateNextOrTrigger = '<Tab>'
 
 " CtrlP / CtrlP extension funky
 nnoremap <silent> <leader>p :CtrlPMixed<CR>
@@ -281,6 +264,7 @@ let g:ctrlp_reuse_window      = 'NERD_tree_2'
 let g:ctrlp_working_path_mode = 2   " Find nearest parent folder with source control
 let g:ctrlp_extensions = ['mixed', 'funky']
 let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_show_hidden = 0
 
 " Syntastic
 let g:syntastic_enable_signs       = 1
@@ -299,3 +283,15 @@ nnoremap <leader>gb :Gblame<CR>
 " Gundo
 nnoremap <silent> <leader>u :GundoToggle<CR>
 let g:gundo_right = 1
+
+" YouCompleteMe
+let g:ycm_use_ultisnips_completer = 0
+
+" vim-go
+let g:go_fmt_command = "goimports"
+
+" vim-jsx
+let g:jsx_ext_required = 0
+
+" rename.vim
+nnoremap <leader>r :Rename
