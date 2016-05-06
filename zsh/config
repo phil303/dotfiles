@@ -4,10 +4,19 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/zsh/oh-my-zsh
 
-# Set name of the theme to load.
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Set name of the theme to load. Must be run before sourcing oh-my-zsh
 export ZSH_THEME="robbyrussell"
+
+source $ZSH/oh-my-zsh.sh
+source <(npm completion)    # add npm completion
+
+# Some custom settings specific to robbyrussell theme
+PROMPT='%{$fg_bold[blue]%}➜ %{$fg_bold[cyan]%}%t %{$fg[yellow]%}${PWD/#$HOME/~} %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{154}±|%f%F{124}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}%B✘%b%F{154}|%f%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%F{154}|"
 
 # Comment this out to disable weekly auto-update checks
 export DISABLE_AUTO_UPDATE="true"
@@ -17,19 +26,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 plugins=(git heroku osx brew gem codedir blogdir dotfilesdir)
-
-source $ZSH/oh-my-zsh.sh
-source <(npm completion)    # add npm completion
-
-# Some custom fonts
-PROMPT='%{$fg_bold[blue]%}➜ %{$fg_bold[cyan]%}%t %{$fg[yellow]%}${PWD/#$HOME/~} %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
-
-RPROMPT='%{$fg_bold[yellow]%}%n%f%{$fg_bold[blue]%}@%{$fg_bold[yellow]%}%m%f%{$reset_color%}'
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%F{154}±|%f%F{124}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}%B✘%b%F{154}|%f%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%F{154}|"
 
 # where brew libraries live
 export PATH=/usr/local/bin:$PATH
