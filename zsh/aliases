@@ -14,14 +14,6 @@ alias gh='git hist '
 alias gist='git hist '
 alias gitup='git submodule foreach git pull origin master'
 
-# postgres
-alias pgstatus='pg_ctl status -D /db/postgres'
-alias pgstart='pg_ctl -D /db/postgres -l /db/postgres/server.log start'
-alias pgstop='pg_ctl -D /db/postgres -l /db/postgres/server.log stop'
-alias blendpgstart='pg_ctl -o "-p 5433" -D /db/blend -l /db/postgres/server.log start'
-alias blendpgstop='pg_ctl -o "-p 5433" -D /db/blend -l /db/postgres/server.log stop'
-alias pglist='ps -ef | grep postgres'
-
 # make ipython run inside virtualenv when possible
 alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 # python virtualenvwrapper aliases
