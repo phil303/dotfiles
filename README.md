@@ -1,5 +1,3 @@
-# Phil Aquilina Dot Files
-
 ## Installation
 
     git clone git://github.com/phil303/dotfiles.git ~/.dotfiles
