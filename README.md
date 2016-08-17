@@ -7,7 +7,7 @@
     mkdir vim/bundle
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-## Install Vim Plugins
+## Vim Plugins
   
     # in Vim
     :PluginInstall
@@ -15,7 +15,7 @@
     # CLI
     vim +PluginInstall +qall
 
-## Install Oh-My-Zsh (just a git submodule)
+## Oh-My-Zsh (just a git submodule)
 
     git submodule update --init --recursive
     chsh -s /bin/zsh
