@@ -8,7 +8,6 @@
     python install.py
     mkdir vim/bundle
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    chsh -s /bin/zsh
 
 ## Install Vim Plugins
   
@@ -18,6 +17,18 @@
     # CLI
     vim +PluginInstall +qall
 
-## Install (or Update) Submodules
+## Install Oh-My-Zsh (just a git submodule)
 
-    gitup
+    git submodule update --init --recursive
+    chsh -s /bin/zsh
+
+## Python VirtualEnv
+
+    mac    - sudo easy_install pip
+    ubuntu - sudo apt-get install python-pip
+
+    sudo pip install virtualenv
+    mkdir ~/.virtualenvs
+    sudo pip install virtualenvwrapper
+    
+    python -m virtualenv [-p python3] project_name
