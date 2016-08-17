@@ -3,8 +3,10 @@ import os
 
 SYMLINKS = [
     'gitignore',
-    'zshrc',
     'vimrc',
+    'vim',
+    'zshrc',
+    'zsh',
 ]
 
 GIT_CONFIG_NAME = "Phil Aquilina"
