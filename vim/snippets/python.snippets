@@ -72,9 +72,6 @@ snippet clatin1
 	# -*- coding: latin-1 -*-
 snippet cascii
 	# -*- coding: ascii -*-
-# Lambda
-snippet ld
-	${1:var} = lambda ${2:vars} : ${3:action}
 snippet .
 	self.
 snippet try Try/Except
@@ -116,16 +113,18 @@ snippet _
 snippet pn
 	print "\n\n\n"
 # Print for debugging
+snippet ld
+	g.log.debug("${1:var}: %s" % $1)
 snippet pd
-	print "${1:var}:", $1
+	print("${1:var}:", $1)
 snippet ps
-	print "\n\n"
-	print "${1:var}:", $1
-	print "\n\n"
+	print("\n\n")
+	print("${1:var}:", $1)
+	print("\n\n")
 snippet pf
-	print "foo"
+	print("foo")
 snippet pb
-	print "bar"
+	print("bar")
 # python debugger (pdb)
 snippet db
 	# TODO:
