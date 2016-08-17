@@ -13,10 +13,10 @@
 ## Install Vim Plugins
   
     # in Vim
-    :BundleInstall
+    :PluginInstall
 
     # CLI
-    vim +BundleInstall +qall
+    vim +PluginInstall +qall
 
 ## Install (or Update) Submodules
 
