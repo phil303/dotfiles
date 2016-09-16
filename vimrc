@@ -178,6 +178,7 @@ if has('autocmd')
   autocmd Filetype python setlocal ai et sta sw=4 sts=4
   autocmd Filetype coffee setlocal ai et sta sw=4 sts=4
   autocmd FileType javascript,c,cpp,java,php,python,coffee,scss,css autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+  autocmd FileType gitcommit set tw=72
 endif
 " }}}1
 " Mappings {{{1
