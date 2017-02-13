@@ -34,6 +34,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'danro/rename.vim'
+Plugin 'leafgarland/typescript-vim'
 
 filetype plugin indent on     " required
 
