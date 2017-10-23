@@ -68,6 +68,7 @@ GIT_CONFIG = """[user]
 [core]
   editor = vim
   autocrlf = input
+  excludesfile = ~/.gitignore
 [apply]
   whitespace = warn
 [format]
