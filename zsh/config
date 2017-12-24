@@ -46,3 +46,6 @@ export PIP_RESPECT_VIRTUALENV=true
 source virtualenvwrapper.sh 
 
 ulimit -n 10000
+
+# set up autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

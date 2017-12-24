@@ -115,6 +115,8 @@ snippet pn
 # Print for debugging
 snippet ld
 	g.log.debug("${1:var}: %s" % $1)
+snippet ppd
+	import pprint; print("${1:var}:"); pprint.pprint($1)
 snippet pd
 	print("${1:var}:", $1)
 snippet ps
