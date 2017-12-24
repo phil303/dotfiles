@@ -263,11 +263,7 @@ let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_show_hidden = 0
 
 " Syntastic
-let g:syntastic_enable_signs       = 1
-let g:syntastic_disabled_filetypes = ['html']
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_stl_format         = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
-let g:syntastic_auto_loc_list      = 2
 nnoremap <silent> <leader>e :Errors<CR>
 
 " Fugitive
@@ -281,9 +277,6 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>u :GundoToggle<CR>
 let g:gundo_right = 1
 
-" YouCompleteMe
-let g:ycm_use_ultisnips_completer = 0
-
 " vim-go
 let g:go_fmt_command = "goimports"
 
@@ -292,4 +285,3 @@ let g:jsx_ext_required = 0
 
 " rename.vim
 nnoremap <leader>r :Rename
-
