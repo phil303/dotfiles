@@ -1,42 +1,41 @@
 " Vundle Settings {{{1
 filetype off
 " I don't know why this works for go syntax highlighting but it does
-set runtimepath+=$GOROOT/misc/vim   
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 nnoremap <leader>` :PluginInstall!<CR>
 
 Plugin 'gmarik/vundle'
+
+" Utility
+Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'fatih/vim-go'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/html5.vim'
-Plugin 'mxw/vim-jsx'
-Plugin 'gg/python.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'SirVer/ultisnips'
-Plugin 'tomtom/tlib_vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-markdown'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/Gundo'
-Plugin 'vim-scripts/closetag.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'Lokaltog/vim-powerline'
+
+" Appearance
 Plugin 'airblade/vim-gitgutter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'danro/rename.vim'
+Plugin 'Lokaltog/vim-powerline'
+
+" Syntax
+Plugin 'fatih/vim-go'
+Plugin 'gg/python.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-ruby/vim-ruby'
 
 filetype plugin indent on     " required
+
 
 
 " Options {{{1
@@ -98,7 +97,7 @@ set clipboard=unnamed " all operations work with OS clipboard
 set colorcolumn=+1    " color background slightly different at text width + 1
 set cursorline        " highlight current line
 set lazyredraw
-set autochdir
+" set autochdir
 
 " Fold for only Vimscript
 augroup filetype_vim
@@ -250,10 +249,6 @@ nnoremap <silent> <leader>n :NERDTreeToggle %:p:h<CR>
 let g:NERDTreeWinSize   = 22
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeIgnore = ['\.pyc$']
-let g:NERDTreeShowHidden = 1
-
-" NerdCommenter
-let g:NERDSpaceDelims = 1
 
 " CtrlP / CtrlP extension funky
 nnoremap <silent> <leader>p :CtrlPMixed<CR>
@@ -270,6 +265,7 @@ let g:ctrlp_show_hidden = 0
 " Syntastic
 let g:syntastic_enable_signs       = 1
 let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 let g:syntastic_stl_format         = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
 let g:syntastic_auto_loc_list      = 2
 nnoremap <silent> <leader>e :Errors<CR>
@@ -296,3 +292,4 @@ let g:jsx_ext_required = 0
 
 " rename.vim
 nnoremap <leader>r :Rename
+
