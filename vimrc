@@ -16,21 +16,23 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/Gundo'
 
 " Appearance
 Plugin 'airblade/vim-gitgutter'
+Plugin 'kshenoy/vim-signature'
 Plugin 'Lokaltog/vim-powerline'
 
 " Syntax
+Plugin 'vim-syntastic/syntastic'
 Plugin 'fatih/vim-go'
 Plugin 'gg/python.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
 
@@ -264,6 +266,7 @@ let g:ctrlp_show_hidden = 0
 
 " Syntastic
 let g:syntastic_stl_format         = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 nnoremap <silent> <leader>e :Errors<CR>
 
 " Fugitive
