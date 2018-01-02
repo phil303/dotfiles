@@ -30,20 +30,14 @@ plugins=(git heroku osx brew gem codedir blogdir dotfilesdir)
 # where brew libraries live
 export PATH=/usr/local/bin:$PATH
 
-# where pip and virtualenv live
-export PATH=/usr/local/share/python:$PATH
-
 # add the Go path
 export GOPATH=$HOME/Code/Go
 export PATH=$GOPATH/bin:$PATH
 
-export EDITOR=vim
+# python from brew
+export PATH=$PATH:~/Library/Python/2.7/bin
 
-# keep virtualenvs all in one place
-export WORKON_HOME=$HOME/.virtualenvs
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
-source virtualenvwrapper.sh 
+export EDITOR=vim
 
 ulimit -n 10000
 
