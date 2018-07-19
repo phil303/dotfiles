@@ -14,8 +14,6 @@ alias gh='git hist '
 alias gist='git hist '
 alias gitup='git submodule foreach git pull origin master'
 
-# make ipython run inside virtualenv when possible
-alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 # python virtualenvwrapper aliases
 alias ve.workon='workon'
 alias ve.deactivate='deactivate'
