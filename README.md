@@ -1,6 +1,6 @@
 ## Installation
 
-    git clone git://github.com/phil303/dotfiles.git ~/.dotfiles
+    git clone git@github.com:phil303/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     # install dotfiles to home directory
     python install.py
