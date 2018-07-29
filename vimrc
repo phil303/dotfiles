@@ -16,7 +16,7 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/Gundo'
 
