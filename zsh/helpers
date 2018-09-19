@@ -1,0 +1,13 @@
+function pr () {
+  if [ $# -lt 1 ]; then
+    echo 'Remote name required.'
+    return 
+  fi
+
+  if [ $# -lt 2 ]; then
+    echo 'PR number required.'
+    return 
+  fi
+  
+  git fetch $1 refs/pull/$2/head:pr/$2 && git checkout -b $1/pull-$2
+}
