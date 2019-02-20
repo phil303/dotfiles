@@ -12,7 +12,6 @@ export ZSH_THEME="robbyrussell"
 ZSH_DISABLE_COMPFIX=true
 
 source $ZSH/oh-my-zsh.sh
-source <(npm completion)    # add npm completion
 
 # Some custom settings specific to robbyrussell theme
 PROMPT='%{$fg_bold[blue]%}➜ %{$fg_bold[cyan]%}%t %{$fg[yellow]%}${PWD/#$HOME/~} %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
