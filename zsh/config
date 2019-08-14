@@ -28,7 +28,7 @@ export ZSH_CUSTOM="$HOME/.dotfiles/zsh/custom"
 HISTSIZE=1000
 SAVEHIST=1000
 
-plugins=(git heroku osx brew gem codedir blogdir dotfilesdir)
+plugins=(git heroku osx brew)
 
 # where brew libraries live
 export PATH=/usr/local/bin:$PATH
@@ -37,12 +37,12 @@ export PATH=/usr/local/bin:$PATH
 export GOPATH=$HOME/Code/Go
 export PATH=$GOPATH/bin:$PATH
 
-# python from brew
-export PATH=$PATH:~/Library/Python/2.7/bin
-
 export EDITOR=vim
 
 ulimit -n 10000
 
 # set up autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+#pyenv
+eval "$(pyenv init -)"
