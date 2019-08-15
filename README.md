@@ -2,18 +2,8 @@
 
     git clone git@github.com:phil303/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
-    # install dotfiles to home directory
-    python install.py
-    mkdir vim/bundle
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-
-## Vim Plugins
-  
-    # in Vim
-    :PluginInstall
-
-    # CLI
-    vim +PluginInstall +qall
+    # setup dev environment
+    ./install.py
 
 ## Oh-My-Zsh (just a git submodule)
 

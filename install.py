@@ -18,6 +18,8 @@ def install():
     create_symlinks()
     create_gitconfig()
     print("Finished installing dotfiles")
+    setup_vim_plugins()
+    print("Finished setting up Vim")
 
 
 def create_symlinks():
@@ -50,6 +52,12 @@ def create_gitconfig():
     with open(git_config_path, 'w') as f:
         print("Writing gitconfig")
         f.write(GIT_CONFIG)
+
+
+def setup_vim_plugins():
+    os.system('mkdir vim/bundle')
+    os.system('git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle')
+    os.system('vim +PluginInstall +qall')
 
 
 GIT_CONFIG = """[user]
