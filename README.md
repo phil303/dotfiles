@@ -35,3 +35,6 @@
 ### iTerm
 If colors don't look right with iTerm on new install, uncheck "Draw bold text
 in bright colors" in the Profiles tab of iTerm.
+
+### Zsh
+To see the order things are executed, use the `zsh -xv` command.
