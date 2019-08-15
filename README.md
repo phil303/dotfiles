@@ -30,3 +30,8 @@
     sudo pip install virtualenvwrapper
     
     python -m virtualenv [-p python3] project_name
+
+## Notes
+### iTerm
+If colors don't look right with iTerm on new install, uncheck "Draw bold text
+in bright colors" in the Profiles tab of iTerm.

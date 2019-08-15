@@ -14,27 +14,8 @@ alias gh='git hist '
 alias gist='git hist '
 alias gitup='git submodule foreach git pull origin master'
 
-# python virtualenvwrapper aliases
-alias ve.workon='workon'
-alias ve.deactivate='deactivate'
-alias ve.mk='mkvirtualenv'
-alias ve.rm='rmvirtualenv'
-alias ve.switch='workon'
-alias ve.add2virtualenv='add2virtualenv'
-alias ve.cdsitepackages='cdsitepackages'
-alias ve.cd='cdvirtualenv'
-alias ve.ls='lssitepackages'
-
 # python pyc remove
 alias cleanpyc='find . -name "*.pyc" -print0 | xargs -0 -n1 rm'
 
-# directory traversal
-alias ....='cd ../../../'
-
 # search for process
 alias ps.find='ps -ef | grep'
-
-# make and cd into directory
-function mcd () {
-  mkdir -p "$1" && cd "$1";
-}
