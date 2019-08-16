@@ -20,6 +20,8 @@ def install():
     print("Finished installing dotfiles")
     setup_vim_plugins()
     print("Finished setting up Vim")
+    setup_virtualenvs_directory()
+    print("Finished setting up Python virtualenvs directory")
 
 
 def create_symlinks():
@@ -58,6 +60,10 @@ def setup_vim_plugins():
     os.system('mkdir vim/bundle')
     os.system('git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle')
     os.system('vim +PluginInstall +qall')
+
+
+def setup_virtualenvs_directory():
+    os.system('mkdir ~/.virtualenvs')
 
 
 GIT_CONFIG = """[user]

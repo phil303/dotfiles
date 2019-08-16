@@ -12,14 +12,10 @@
 
 ## Python VirtualEnv
 
-    mac    - sudo easy_install pip
-    ubuntu - sudo apt-get install python-pip
+    python3 -m venv ~/.virtualenvs/<name>
 
-    sudo pip install virtualenv
-    mkdir ~/.virtualenvs
-    sudo pip install virtualenvwrapper
-    
-    python -m virtualenv [-p python3] project_name
+    # to activate
+    . ~/.virtualenvs/<name>/bin/activate
 
 ## Notes
 ### iTerm
