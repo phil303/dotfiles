@@ -1,18 +1,6 @@
 alias l='ls -al'
 
-# adds git aliases
-alias gs='git status '
-alias gss='git status -s '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit '
-alias gd='git diff '
-alias co='git checkout '
-alias gk='gitk --all&'
-alias gx='gitx --all'
-alias gh='git hist '
-alias gist='git hist '
-alias gitup='git submodule foreach git pull origin master'
+alias gist='git log '
 
 # python pyc remove
 alias cleanpyc='find . -name "*.pyc" -print0 | xargs -0 -n1 rm'

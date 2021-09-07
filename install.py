@@ -69,12 +69,6 @@ def setup_virtualenvs_directory():
 GIT_CONFIG = """[user]
   name = {name}
   email = {email}
-[alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  hist = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd, %cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
 [color]
   diff = auto
   status = auto
@@ -86,7 +80,7 @@ GIT_CONFIG = """[user]
 [apply]
   whitespace = warn
 [format]
-  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+  pretty = %Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cd, %cr) %C(bold blue)<%an>%Creset
 [credential]
   helper = osxkeychain
 [diff]
