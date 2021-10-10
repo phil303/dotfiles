@@ -1,6 +1,7 @@
 alias l='ls -al'
 
-alias gist='git log '
+alias gist='git log'
+alias gs='git status'
 
 # python pyc remove
 alias cleanpyc='find . -name "*.pyc" -print0 | xargs -0 -n1 rm'
