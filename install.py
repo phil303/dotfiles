@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 import os
 
 SYMLINKS = [
@@ -7,6 +7,11 @@ SYMLINKS = [
     'vim',
     'zshrc',
     'zsh',
+]
+
+BREW_PACKAGES = [
+    'git',
+    'git-delta'
 ]
 
 GIT_CONFIG_NAME = "Phil Aquilina"
@@ -18,6 +23,8 @@ def install():
     create_symlinks()
     create_gitconfig()
     print("Finished installing dotfiles")
+    install_brew()
+    print("Finished installing brew and its packages")
     setup_vim_plugins()
     print("Finished setting up Vim")
     setup_virtualenvs_directory()
@@ -56,6 +63,11 @@ def create_gitconfig():
         f.write(GIT_CONFIG)
 
 
+def install_brew():
+  os.system("/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"")
+  os.system(f"brew install {' '.join(BREW_PACKAGES)}")
+
+
 def setup_vim_plugins():
     os.system('mkdir vim/bundle')
     os.system('git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle')
@@ -87,8 +99,16 @@ GIT_CONFIG = """[user]
   tool = opendiff
 [push]
   default = simple
-""".format(name=GIT_CONFIG_NAME, email=GIT_CONFIG_EMAIL)
 
+[delta]
+  side-by-side = true
+  features = decorations
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = yellow box
+""".format(name=GIT_CONFIG_NAME, email=GIT_CONFIG_EMAIL)
 
 
 if __name__ == '__main__':
