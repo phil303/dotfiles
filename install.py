@@ -87,10 +87,6 @@ GIT_CONFIG = """[user]
   tool = opendiff
 [push]
   default = simple
-[filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
-  required = true
 """.format(name=GIT_CONFIG_NAME, email=GIT_CONFIG_EMAIL)
 
 
