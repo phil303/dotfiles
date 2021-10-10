@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import subprocess
 
 SYMLINKS = [
     'gitignore',
@@ -11,13 +12,14 @@ SYMLINKS = [
 
 BREW_PACKAGES = [
     'git',
-    'git-delta'
+    'git-delta',
 ]
 
 GIT_CONFIG_NAME = "Phil Aquilina"
 GIT_CONFIG_EMAIL = "philaquilina@gmail.com"
 
 HOME_DIR = os.path.expanduser('~')
+
 
 def install():
     create_symlinks()
@@ -53,7 +55,7 @@ def create_gitconfig():
     git_config_path = "%s/.gitconfig" % HOME_DIR
 
     if os.path.exists(git_config_path):
-        reply = raw_input("gitconfig already exists. Overwrite? ")
+        reply = input("gitconfig already exists. Overwrite? ")
         overwrite = len(reply) > 0 and reply[0].lower() == "y"
         if not overwrite:
             return
@@ -64,18 +66,18 @@ def create_gitconfig():
 
 
 def install_brew():
-  os.system("/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"")
-  os.system(f"brew install {' '.join(BREW_PACKAGES)}")
+    subprocess.run("/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"", shell=True)
+    subprocess.run(f"brew install {' '.join(BREW_PACKAGES)}", shell=True)
 
 
 def setup_vim_plugins():
-    os.system('mkdir vim/bundle')
-    os.system('git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle')
-    os.system('vim +PluginInstall +qall')
+    subprocess.run(["mkdir", "vim/bundle"])
+    subprocess.run(["git", "clone", "https://github.com/gmarik/vundle.git", "~/.vim/bundle/vundle"])
+    subprocess.run(["vim", "+PluginInstall", "+qall"])
 
 
 def setup_virtualenvs_directory():
-    os.system('mkdir ~/.virtualenvs')
+    subprocess.run(["mkdir", "~/.virtualenvs"])
 
 
 GIT_CONFIG = """[user]
