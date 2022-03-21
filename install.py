@@ -13,6 +13,8 @@ SYMLINKS = [
 BREW_PACKAGES = [
     'git',
     'git-delta',
+    'ripgrep',
+    'fzf',
 ]
 
 GIT_CONFIG_NAME = "Phil Aquilina"
@@ -31,6 +33,7 @@ def install():
     print("Finished setting up Vim")
     setup_virtualenvs_directory()
     print("Finished setting up Python virtualenvs directory")
+    install_fzf_extras()
 
 
 def create_symlinks():
@@ -66,8 +69,8 @@ def create_gitconfig():
 
 
 def install_brew():
-    subprocess.run("/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"", shell=True)
-    subprocess.run(f"brew install {' '.join(BREW_PACKAGES)}", shell=True)
+    subprocess.run(["/bin/bash", "-c", "\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""])
+    subprocess.run(["brew", "install", ' '.join(BREW_PACKAGES)])
 
 
 def setup_vim_plugins():
@@ -78,6 +81,11 @@ def setup_vim_plugins():
 
 def setup_virtualenvs_directory():
     subprocess.run(["mkdir", "~/.virtualenvs"])
+
+
+def install_fzf_extra():
+    """Installs keybindings (ctrl-T, ctrl-R, and alt-C) and fuzzy completion"""
+    subprocess.run("$(brew --prefix)/opt/fzf/install ", shell=True)
 
 
 GIT_CONFIG = """[user]
@@ -103,13 +111,12 @@ GIT_CONFIG = """[user]
   default = simple
 
 [delta]
-  side-by-side = true
   features = decorations
 [delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = yellow box
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = yellow box
 """.format(name=GIT_CONFIG_NAME, email=GIT_CONFIG_EMAIL)
 
 

@@ -32,7 +32,3 @@ export PATH=$GOPATH/bin:$PATH
 export EDITOR=vim
 
 ulimit -n 10000
-
-# set up autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-
