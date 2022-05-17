@@ -22,8 +22,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%F{154}|"
 HISTSIZE=1000
 SAVEHIST=1000
 
-# where brew libraries live
-export PATH=/usr/local/bin:$PATH
+# Brew libraries
+export PATH=/opt/homebrew/bin:$PATH
 
 # add the Go path
 export GOPATH=$HOME/Code/Go
