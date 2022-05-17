@@ -6,10 +6,10 @@
 [[ -f ~/.localrc ]] && . ~/.localrc
 export AWS_SDK_LOAD_CONFIG=true
 
-# set up fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# bit of a hack but opt-c doesn't work on Mac otherwise
-bindkey "ç" fzf-cd-widget
+# point to custom zsh functions
+FPATH=$FPATH:$HOME/.dotfiles/zsh/custom
 
 # set up autocompletions
 autoload -U compinit; compinit
+# set up custom functions
+autoload -U ghe

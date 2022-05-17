@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ORIGIN_UPSTREAM='origin'
+PHIL_FORK='phil-aquilina'
+
+ghe () {
+    # get mainline branch (usually master, sometimes main)
+    MAIN_BRANCH=$(git symbolic-ref refs/remotes/${ORIGIN_UPSTREAM}/HEAD | rev | cut -d "/" -f1 | rev)
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+    # The next few lines transforms the git url to an https one (super hacky)
+    UPSTREAM_URL=$(git config remote.${ORIGIN_UPSTREAM}.url)
+    # removes the "git@" prefix
+    PREFIX_REMOVED="${UPSTREAM_URL#"git@"}"
+    # removes the ".git" suffix
+    SUFFIX_REMOVED="${PREFIX_REMOVED%".git"}"
+    # replaces the ":" with a "/", adds the https scheme, and the rest of the path
+    HTTP_URL="https://${SUFFIX_REMOVED/://}/compare/${MAIN_BRANCH}...${PHIL_FORK}:${CURRENT_BRANCH}"
+
+    # open it in the browser
+    open $HTTP_URL
+}
+
+ghe
