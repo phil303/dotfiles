@@ -14,7 +14,7 @@ BREW_PACKAGES = [
     'git',
     'git-delta',
     'ripgrep',
-    'fzf',
+    'asdf'
 ]
 
 GIT_CONFIG_NAME = "Phil Aquilina"
@@ -33,7 +33,6 @@ def install():
     print("Finished setting up Vim")
     setup_virtualenvs_directory()
     print("Finished setting up Python virtualenvs directory")
-    install_fzf_extras()
 
 
 def create_symlinks():
@@ -81,11 +80,6 @@ def setup_vim_plugins():
 
 def setup_virtualenvs_directory():
     subprocess.run(["mkdir", "~/.virtualenvs"])
-
-
-def install_fzf_extra():
-    """Installs keybindings (ctrl-T, ctrl-R, and alt-C) and fuzzy completion"""
-    subprocess.run("$(brew --prefix)/opt/fzf/install ", shell=True)
 
 
 GIT_CONFIG = """[user]

@@ -25,7 +25,10 @@ SAVEHIST=1000
 # Brew libraries
 export PATH=/opt/homebrew/bin:$PATH
 
-# add the Go path
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# Go
 export GOPATH=$HOME/Code/Go
 export PATH=$GOPATH/bin:$PATH
 
