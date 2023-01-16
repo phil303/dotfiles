@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import os
 import subprocess
 
@@ -22,18 +23,13 @@ GIT_CONFIG_EMAIL = "philaquilina@gmail.com"
 
 HOME_DIR = os.path.expanduser('~')
 
-
-def install():
-    create_symlinks()
-    create_gitconfig()
-    print("Finished installing dotfiles")
-    install_brew()
-    print("Finished installing brew and its packages")
-    setup_vim_plugins()
-    print("Finished setting up Vim")
-    setup_virtualenvs_directory()
-    print("Finished setting up Python virtualenvs directory")
-
+def install(specific_modules):
+    for mod in specific_modules:
+        try:
+            MODULES[mod]()
+            print("Finished setting up %s." % mod)
+        except KeyError:
+            print("Unable to find module named %s." % mod)
 
 def create_symlinks():
     current_dir = os.path.dirname(os.path.realpath(__file__))
@@ -69,6 +65,9 @@ def create_gitconfig():
 
 def install_brew():
     subprocess.run(["/bin/bash", "-c", "\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""])
+
+
+def install_brew_packages():
     subprocess.run(["brew", "install", ' '.join(BREW_PACKAGES)])
 
 
@@ -80,6 +79,16 @@ def setup_vim_plugins():
 
 def setup_virtualenvs_directory():
     subprocess.run(["mkdir", "~/.virtualenvs"])
+
+
+MODULES = {
+  'symlinks': create_symlinks,
+  'gitconfig': create_gitconfig,
+  'brew': install_brew,
+  'brew-packages': install_brew_packages(),
+  'vim': setup_vim_plugins,
+  'virtualenv': setup_virtualenvs_directory,
+}
 
 
 GIT_CONFIG = """[user]
@@ -115,4 +124,13 @@ GIT_CONFIG = """[user]
 
 
 if __name__ == '__main__':
-    install()
+    parser = argparse.ArgumentParser(description='Setup development environment.')
+    parser.add_argument(
+        'modules',
+        type=str,
+        nargs='*',
+        default=list(MODULES.keys()),
+        help='Install specific modules. Options are: %s.' % ", ".join(MODULES.keys()),
+    )
+    args = parser.parse_args()
+    install(args.modules)
