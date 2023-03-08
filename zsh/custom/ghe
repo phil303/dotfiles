@@ -15,7 +15,7 @@ ghe () {
     # removes the ".git" suffix
     SUFFIX_REMOVED="${PREFIX_REMOVED%".git"}"
     # replaces the ":" with a "/", adds the https scheme, and the rest of the path
-    HTTP_URL="https://${SUFFIX_REMOVED/://}/compare/${MAIN_BRANCH}...${PHIL_FORK}:${CURRENT_BRANCH}"
+    HTTP_URL="${SUFFIX_REMOVED}/compare/${MAIN_BRANCH}...${PHIL_FORK}:${CURRENT_BRANCH}"
 
     # open it in the browser
     open $HTTP_URL
