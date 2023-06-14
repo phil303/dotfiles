@@ -19,16 +19,18 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%F{154}|"
 HISTSIZE=1000
 SAVEHIST=1000
 
-# Brew libraries
-export PATH=/opt/homebrew/bin:$PATH
+if [[ $(uname) == 'Darwin' ]]; then
+    # Brew libraries
+    export PATH=/opt/homebrew/bin:$PATH
 
-# asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
+    # asdf
+    . $(brew --prefix asdf)/libexec/asdf.sh
 
-# Go
-export GOROOT=$(asdf where go)/go
-export GOPATH=$HOME/Code/Go
-export PATH=$GOPATH/bin:$PATH
+    # Go
+    export GOROOT=$(asdf where go)/go
+    export GOPATH=$HOME/Code/Go
+    export PATH=$GOPATH/bin:$PATH
+fi
 
 export EDITOR=vim
 
