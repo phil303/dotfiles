@@ -82,6 +82,10 @@ def setup_virtualenvs_directory():
     subprocess.run(["mkdir", "~/.virtualenvs"])
 
 
+def install_asdf():
+    subprocess.run(["git", "clone", "https://github.com/asdf-vm/asdf.git", "~/.asdf", "--branch", "v0.11.3"])
+
+
 MODULES = {
   'symlinks': create_symlinks,
   'gitconfig': create_gitconfig,
@@ -90,6 +94,7 @@ MODULES = {
   'vim': setup_vim_plugins,
   'virtualenv': setup_virtualenvs_directory,
 }
+
 
 DEFAULT_MODULES = [
   'symlinks',
@@ -100,11 +105,13 @@ DEFAULT_MODULES = [
   'virtualenv',
 ]
 
+
 LINUX_MODULES = {
   'symlinks',
   'gitconfig',
   'vim',
   'virtualenv',
+  'asdf',
 }
 
 

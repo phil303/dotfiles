@@ -30,12 +30,16 @@ if [[ $(uname) == 'Darwin' ]]; then
 
     # asdf
     . $(brew --prefix asdf)/libexec/asdf.sh
-
-    # Go
-    export GOROOT=$(asdf where go)/go
-    export GOPATH=$HOME/Code/Go
-    export PATH=$GOPATH/bin:$PATH
+else
+    # asdf
+    . "$HOME/.asdf/asdf.sh"
+    fpath=(${ASDF_DIR}/completions $fpath)
 fi
+
+# Go
+export GOROOT=$(asdf where go)/go
+export GOPATH=$HOME/Code/Go
+export PATH=$GOPATH/bin:$PATH
 
 export EDITOR=vim
 
