@@ -84,6 +84,7 @@ def setup_virtualenvs_directory():
 
 def install_asdf():
     subprocess.run(["git", "clone", "https://github.com/asdf-vm/asdf.git", "~/.asdf", "--branch", "v0.11.3"])
+    subprocess.run(["asdf", "plugin-add", "go", "https://github.com/kennyp/asdf-golang.git"])
 
 
 MODULES = {
