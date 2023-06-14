@@ -24,6 +24,7 @@ GIT_CONFIG_EMAIL = "phil303@users.noreply.github.com"
 HOME_DIR = os.path.expanduser('~')
 
 def install(specific_modules):
+    print("Setting up %s" % ", ".join(specific_modules))
     for mod in specific_modules:
         try:
             MODULES[mod]()
@@ -90,6 +91,22 @@ MODULES = {
   'virtualenv': setup_virtualenvs_directory,
 }
 
+DEFAULT_MODULES = [
+  'symlinks',
+  'gitconfig',
+  'brew',
+  'brew-packages',
+  'vim',
+  'virtualenv',
+]
+
+LINUX_MODULES = {
+  'symlinks',
+  'gitconfig',
+  'vim',
+  'virtualenv',
+}
+
 
 GIT_CONFIG = """[user]
   name = {name}
@@ -126,11 +143,21 @@ GIT_CONFIG = """[user]
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Setup development environment.')
     parser.add_argument(
-        'modules',
-        type=str,
-        nargs='*',
-        default=list(MODULES.keys()),
-        help='Install specific modules. Options are: %s.' % ", ".join(MODULES.keys()),
+        '--platform',
+        choices=['macos', 'linux'],
+        help='Specify the platform (optional)',
     )
+    parser.add_argument(
+        '--modules',
+        nargs='+',
+        type=str,
+        choices=DEFAULT_MODULES,
+        help='Install specific modules (optional)',
+    )
+
     args = parser.parse_args()
-    install(args.modules)
+    modules = DEFAULT_MODULES
+    if args.platform == 'linux':
+        modules = LINUX_MODULES
+
+    install(modules)
