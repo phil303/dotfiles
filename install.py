@@ -19,7 +19,7 @@ BREW_PACKAGES = [
 ]
 
 GIT_CONFIG_NAME = "Phil Aquilina"
-GIT_CONFIG_EMAIL = "philaquilina@gmail.com"
+GIT_CONFIG_EMAIL = "phil303@users.noreply.github.com"
 
 HOME_DIR = os.path.expanduser('~')
 
