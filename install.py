@@ -85,7 +85,7 @@ MODULES = {
   'symlinks': create_symlinks,
   'gitconfig': create_gitconfig,
   'brew': install_brew,
-  'brew-packages': install_brew_packages(),
+  'brew-packages': install_brew_packages,
   'vim': setup_vim_plugins,
   'virtualenv': setup_virtualenvs_directory,
 }
