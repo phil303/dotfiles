@@ -24,13 +24,18 @@ GIT_CONFIG_EMAIL = "phil303@users.noreply.github.com"
 HOME_DIR = os.path.expanduser('~')
 
 def install(specific_modules):
-    print("Setting up %s" % ", ".join(specific_modules))
+    reply = input("Setting up %s. Continue? " % ", ".join(specific_modules))
+    should_continue = len(reply) > 0 and reply[0].lower() == "y"
+    if not should_continue:
+        return
+
     for mod in specific_modules:
         try:
             MODULES[mod]()
             print("Finished setting up %s." % mod)
         except KeyError:
             print("Unable to find module named %s." % mod)
+
 
 def create_symlinks():
     current_dir = os.path.dirname(os.path.realpath(__file__))
@@ -51,6 +56,7 @@ def create_symlinks():
 
 
 def create_gitconfig():
+    template = "./gitconfig.template"
     git_config_path = "%s/.gitconfig" % HOME_DIR
 
     if os.path.exists(git_config_path):
@@ -59,9 +65,19 @@ def create_gitconfig():
         if not overwrite:
             return
 
-    with open(git_config_path, 'w') as f:
+    with open(template, 'r') as r, open(git_config_path, 'w') as w:
+        config = r.read()
+
+        enterprise_host = input("Github Enterprise host? ")
+        config = (
+            config
+                .replace("{{enterprise_host}}", enterprise_host)
+                .replace("{{name}}", GIT_CONFIG_NAME)
+                .replace("{{email}}", GIT_CONFIG_EMAIL)
+        )
+
         print("Writing gitconfig")
-        f.write(GIT_CONFIG)
+        w.write(config)
 
 
 def install_brew():
@@ -167,5 +183,7 @@ if __name__ == '__main__':
     modules = DEFAULT_MODULES
     if args.platform == 'linux':
         modules = LINUX_MODULES
+    elif args.modules:
+      modules = args.modules
 
     install(modules)

@@ -1,0 +1,53 @@
+[user]
+  name = {{name}}
+  email = {{email}}
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd, %cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
+
+  mainremote = "!echo $(git remote get-url origin > /dev/null 2>&1 && echo 'origin')"
+  enterprisehost = "!echo '{{enterprise_host}}'"
+
+  pr = "!f() { \
+      open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) \
+      | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+      | sed 's|git@'$(git enterprisehost)':\\(.*\\)$|https://'$(git enterprisehost)'/\\1|' \
+      | sed 's|\\.git$||'; \
+      )/compare/$(\
+      git symbolic-ref HEAD 2> /dev/null | sed 's|refs/heads/||' \
+      )?expand=1\"; \
+    }; f"
+  hub = "!f() { \
+      open \"$(git ls-remote --get-url $(git mainremote) \
+      | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
+      | sed 's|git@'$(git enterprisehost)':\\(.*\\)$|https://'$(git enterprisehost)'/\\1|' \
+      | sed 's|\\.git$||'; \
+      )\"; \
+    }; f"
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[core]
+  editor = vim
+  autocrlf = input
+  excludesfile = ~/.gitignore
+[apply]
+  whitespace = warn
+[format]
+  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[credential]
+  helper = osxkeychain
+[diff]
+  tool = opendiff
+[push]
+  default = simple
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+[init]
+  defaultBranch = main
