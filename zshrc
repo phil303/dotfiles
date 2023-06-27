@@ -1,4 +1,4 @@
-alias l='ls -al'
+alias l='ls -Al'
 alias gist='git log'
 alias gs='git status'
 alias cleanpyc='find . -name "*.pyc" -print0 | xargs -0 -n1 rm'
