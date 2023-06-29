@@ -169,21 +169,19 @@ if __name__ == '__main__':
     parser.add_argument(
         '--platform',
         choices=['macos', 'linux'],
-        help='Specify the platform (optional)',
+        default='macos',
+        help='Specify the platform (defaults to macos)',
     )
     parser.add_argument(
         '--modules',
         nargs='+',
-        type=str,
         choices=DEFAULT_MODULES,
         help='Install specific modules (optional)',
     )
 
     args = parser.parse_args()
-    modules = DEFAULT_MODULES
-    if args.platform == 'linux':
-        modules = LINUX_MODULES
-    elif args.modules:
+    modules = LINUX_MODULES if args.platform == 'linux' else DEFAULT_MODULES
+    if args.modules:
       modules = args.modules
 
     install(modules)
