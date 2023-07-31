@@ -43,6 +43,7 @@
   helper = osxkeychain
 [diff]
   tool = opendiff
+  wsErrorHighlight = all
 [push]
   default = simple
 [filter "lfs"]
