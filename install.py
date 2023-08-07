@@ -68,13 +68,11 @@ def create_gitconfig():
     with open(template, 'r') as r, open(git_config_path, 'w') as w:
         config = r.read()
 
-        enterprise_host = input("Github Enterprise host? ")
-        config = (
-            config
-                .replace("{{enterprise_host}}", enterprise_host)
-                .replace("{{name}}", GIT_CONFIG_NAME)
-                .replace("{{email}}", GIT_CONFIG_EMAIL)
-        )
+        author_email = input("Author email? [default: %s]: " % GIT_CONFIG_EMAIL)
+        if not author_email:
+            author_email = GIT_CONFIG_EMAIL
+
+        config = config.replace("{{name}}", GIT_CONFIG_NAME).replace("{{email}}", author_email)
 
         print("Writing gitconfig")
         w.write(config)
