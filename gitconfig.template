@@ -11,15 +11,7 @@
   mainremote = "!echo $(git remote get-url origin > /dev/null 2>&1 && echo 'origin')"
   enterprisehost = "!echo '{{enterprise_host}}'"
 
-  pr = "!f() { \
-      open \"$(git ls-remote --get-url $(git config --get branch.$(git rev-parse --abbrev-ref HEAD).remote) \
-      | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
-      | sed 's|git@'$(git enterprisehost)':\\(.*\\)$|https://'$(git enterprisehost)'/\\1|' \
-      | sed 's|\\.git$||'; \
-      )/compare/$(\
-      git symbolic-ref HEAD 2> /dev/null | sed 's|refs/heads/||' \
-      )?expand=1\"; \
-    }; f"
+  pr = !bash -c 'source $HOME/.dotfiles/scripts/github && gitpr'
   hub = "!f() { \
       open \"$(git ls-remote --get-url $(git mainremote) \
       | sed 's|git@github.com:\\(.*\\)$|https://github.com/\\1|' \
