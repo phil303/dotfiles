@@ -8,8 +8,9 @@
   br = branch
   hist = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd, %cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
 
-  pr = !bash -c 'source $HOME/.dotfiles/scripts/github && gitpr'
-  repo = !bash -c 'source $HOME/.dotfiles/scripts/github && gitrepo'
+  pr = !bash -c 'source $HOME/.dotfiles/scripts/github && github_pr'
+  repo = !bash -c 'source $HOME/.dotfiles/scripts/github && github_repo'
+  from-pr = !bash -c 'source $HOME/.dotfiles/scripts/github && github_from_pr $0 $@'
 [color]
   diff = auto
   status = auto

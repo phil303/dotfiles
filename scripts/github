@@ -8,7 +8,8 @@ origin_url() {
     echo $(echo $url | sed 's|git@\(.*\):\(.*\)$|https://\1/\2|' | sed 's|\.git$||')
 }
 
-gitpr() {
+# Open up the PR page for this changeset
+github_pr() {
     fork_owner=$(git ls-remote --get-url phil | sed 's|git@github.*:\(.*\)/.*|\1|')
     fork_url=$(git ls-remote --get-url phil);
     trunk=$(git remote show phil | sed -n '/HEAD branch/s/.*: //p')
@@ -17,6 +18,13 @@ gitpr() {
     open $(origin_url)$compare_path
 }
 
-gitrepo() { \
+# Open this project's github url
+github_repo() { \
     open $(origin_url)
+}
+
+# Create a local branch from a PR. Defaults to "origin" upstream if argument is
+# not provided.
+github_from_pr() {
+    git fetch -fu ${2:-$(git remote | grep $(main_remote))} refs/pull/$1/head:pr/$1 && git checkout pr/$1;
 }
