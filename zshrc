@@ -29,11 +29,7 @@ if [[ $(uname) == 'Darwin' ]]; then
     export PATH=/opt/homebrew/bin:$PATH
 
     # asdf
-    . $(brew --prefix asdf)/libexec/asdf.sh
-else
-    # asdf
-    . "$HOME/.asdf/asdf.sh"
-    fpath=(${ASDF_DIR}/completions $fpath)
+    fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 fi
 
 # Go
