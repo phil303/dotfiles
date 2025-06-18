@@ -5,7 +5,7 @@ alias cleanpyc='find . -name "*.pyc" -print0 | xargs -0 -n1 rm'
 alias find-process='ps -ef | grep'
 
 # Set up ZSH
-export ZSH=$HOME/.dotfiles/zsh/oh-my-zsh
+export ZSH=$HOME/.dotfiles/zsh/ohmyzsh
 export ZSH_THEME="robbyrussell"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
