@@ -1,11 +1,11 @@
 " Vundle Settings {{{1
 filetype off
 " I don't know why this works for go syntax highlighting but it does
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 nnoremap <leader>` :PluginInstall!<CR>
 
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " Utility
 Plugin 'kien/ctrlp.vim'
@@ -35,6 +35,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
 
+call vundle#end()
 filetype plugin indent on     " required
 
 
